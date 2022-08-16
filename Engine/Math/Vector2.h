@@ -15,6 +15,9 @@ namespace dbf
 		Vector2(int x, int y) : x{ (float)x }, y{ (float)y } {}
 
 		void Set(float x, float y) { this->x = x; this->y = y; }
+		float operator [] (size_t index) const { return (&x) [index]; }
+		float& operator [] (size_t index) { return (&x)[index]; }
+
 
 		// arithmetic operators
 		// Vector2 = Vector2 + Vector2
@@ -61,22 +64,16 @@ namespace dbf
 
 		float GetAngle();
 		static Vector2 Rotate(const Vector2& v, float angle);
+
+		static const Vector2 one;
+		static const Vector2 zero;
+		static const Vector2 up;
+		static const Vector2 down;
+		static const Vector2 left;
+		static const Vector2 right;
 	};
 		
-	inline std::istream& operator >> (std::istream& stream, Vector2& v)
-	{
-		std::string line;
-		std::getline(stream, line);
-
-		// { ##, ## }
-		std::string xs = line.substr(line.find("{") + 1, line.find(",") - (line.find("{") + 1));
-		v.x = std::stof(xs);
-
-		std::string ys = line.substr(line.find(",") + 1, line.find("}") - (line.find(",") + 1));
-		v.y = std::stof(ys);
-
-		return stream;
-	}
+	std::istream& operator >> (std::istream& stream, Vector2& v);
 
 	inline float Vector2::LengthSqr() 
 	{ 
@@ -122,5 +119,13 @@ namespace dbf
 
 		return Vector2{ x, y };
 	}
+
+
+
+
+
+
+
+	//int m[2][2];
 }
 

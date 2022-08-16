@@ -33,6 +33,12 @@
     <Filter Include="Source\View\Audio">
       <UniqueIdentifier>{576f9335-f831-4851-b8f2-8ca799dc02c0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Framework\Components">
+      <UniqueIdentifier>{76ea4b44-43bb-4844-9409-e1fd811e9a97}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Resource">
+      <UniqueIdentifier>{086c8ff0-c6e7-4644-8087-16e9980303ba}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Math\mathUtils.cpp">
@@ -76,6 +82,33 @@
     </ClCompile>
     <ClCompile Include="Renderer\Texture.cpp">
       <Filter>Source\View\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Logger.cpp">
+      <Filter>Source\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\Vector2.cpp">
+      <Filter>Source\Controller\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\color.cpp">
+      <Filter>Source\Controller\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Components\PlayComponents.cpp">
+      <Filter>Source\Framework\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\Mat2x2.cpp">
+      <Filter>Source\Controller\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\Mat3x3.cpp">
+      <Filter>Source\Controller\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Resource\ResourceMgmt.cpp">
+      <Filter>Source\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Components\RenderComponent.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Components\ModelComponent.cpp">
+      <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -138,6 +171,45 @@
     </ClInclude>
     <ClInclude Include="Renderer\Texture.h">
       <Filter>Source\View\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Logger.h">
+      <Filter>Source\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Components\PlayComponents.h">
+      <Filter>Source\Framework\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Components\Component.h">
+      <Filter>Source\Framework\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Mat2x2.h">
+      <Filter>Source\Controller\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Vector3.h">
+      <Filter>Source\Controller\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Mat3x3.h">
+      <Filter>Source\Controller\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Components\ModelComponent.h">
+      <Filter>Source\Framework\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource\Resource.h">
+      <Filter>Source\Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource\ResourceMgmt.h">
+      <Filter>Source\Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Components\AudioComponent.h">
+      <Filter>Source\Framework\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Components\PhysicsComponent.h">
+      <Filter>Source\Framework\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Components\RenderComponent.h">
+      <Filter>Source\Framework\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Components\SpriteComponent.h">
+      <Filter>Source\Framework\Components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

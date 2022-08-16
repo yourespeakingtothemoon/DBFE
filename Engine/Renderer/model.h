@@ -1,11 +1,12 @@
 #pragma once
 #include "renderer.h"
+#include "Resource\Resource.h"
 #include <vector>
 #include <string>
 
 namespace dbf
 {
-	class Model
+	class Model : public Resource
 	{
 	public:
 		Model() = default;
@@ -16,9 +17,13 @@ namespace dbf
 		}
 		Model(const std::string& filename);
 
-		void Draw(Renderer& renderer, const Vector2& position, float angle, float scale = 1);
+		//bool Create(const std::string& filename);
+		bool Create(std::string filename, ...) override;
 
-		void Load(const std::string& filename);
+		void Draw(Renderer& renderer, const Vector2& position, float angle, const Vector2& vector = Vector2 {1,1});
+		void Draw(Renderer& renderer, const Transform& transform);
+
+		bool Load(const std::string& filename);
 		float CalculateRadius();
 		float getRadius() { return m_hitbox; }
 

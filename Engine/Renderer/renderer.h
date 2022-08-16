@@ -10,6 +10,7 @@ struct SDL_Window;
 namespace dbf
 {
 	class Texture;
+	struct Transform;
 	class Renderer
 	{
 		
@@ -25,7 +26,8 @@ namespace dbf
 		void EndFrame();
 		void SetClearColor(const Color& color) { m_clearColor = color; }
 
-		void Draw(std::shared_ptr<Texture> texture, const Vector2& position, float angle = 0);
+		void Draw(std::shared_ptr<Texture> texture, const Vector2& position, float angle =0,const Vector2& scale=Vector2{1,1}, const Vector2& reg_point = Vector2 {0.5f,0.5f});
+		void Draw(std::shared_ptr<Texture> texture, const Transform& transform, const Vector2& reg_point = Vector2{ 0.5f,0.5f });
 		void DrawLine(float x1, float y1, float x2, float y2);
 		void DrawLine(const Vector2& v1, const Vector2& v2, const Color& color);
 		void DrawPoint(float x, float y);

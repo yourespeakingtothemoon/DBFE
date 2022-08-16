@@ -1,5 +1,6 @@
 #pragma once
 #include "GameObject.h"
+#include "Components/Component.h"
 #include "../Renderer/Model.h"
 
 namespace dbf
@@ -10,15 +11,15 @@ namespace dbf
 	{
 	public:
 		Actor() = default;
-		Actor(const Model& model, const Transform& transform) : 
-			GameObject{ transform },
-			m_model{ model } {}
+		Actor(const Transform& transform) : m_transform{transform } {}
+		
 		std::string GetTag() { return m_tag; }
 		void SetTag(std::string tag) { m_tag = tag; }
 		virtual void Update() override {}
 		virtual void Draw(Renderer& renderer);
 		virtual void OnCollision(Actor* other) {}
-		float getRad() { return m_model.getRadius() * m_transform.scale; }
+		float getRad() { return m_model.getRadius() * std::max(m_transform.scale.x,m_transform.scale.y); }
+		//void addComponent(std::unique_ptr<Component> component);
 		friend class Scene;
 		//float GetRadius();
 
@@ -32,5 +33,8 @@ namespace dbf
 
 		Scene* m_scene = nullptr;
 		Model m_model;
+		Transform m_transform;
+
+		//std::vector<Component&> m_components;
 	};
 }

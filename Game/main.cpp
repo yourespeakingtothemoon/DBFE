@@ -29,6 +29,7 @@ int main()
 	dbf::g_renderer.SetClearColor(dbf::Color{ 255, 10, 100, 255 });
 	std::shared_ptr<dbf::Texture> dbfeLogo = std::make_shared<dbf::Texture>();
 	dbfeLogo->Create(dbf::g_renderer, "Images/logo.png");
+	float angle = 0;
 	bool quit = false;
 //game loop
 	while (!quit)
@@ -39,10 +40,10 @@ int main()
 		dbf::g_audio.Update();
 		//check for esc
 		if (dbf::g_inputSystem.getKeyState(dbf::key_escape) == dbf::inpSystem::keyState::Pressed) quit = true;
-		
+		angle += 90*dbf::g_time.deltaTime;
 		// render
 		dbf::g_renderer.BeginFrame();
-		dbf::g_renderer.Draw(dbfeLogo, { 200, 200 }, 0);
+		dbf::g_renderer.Draw(dbfeLogo, { 400, 400 }, angle,{1,1},{1.0f,.5f});
 		dbf::g_renderer.EndFrame();
 }
 	dbf::g_inputSystem.shutdown();

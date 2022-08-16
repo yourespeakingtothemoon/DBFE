@@ -1,5 +1,7 @@
 #include "renderer.h"
 #include "Texture.h"
+#include "Math/Transform.h"
+#include "Math/mathUtils.h"
 #include <SDL.h>
 #include <SDL_ttf.h>
 #include <SDL_image.h>
@@ -42,18 +44,46 @@ namespace dbf
 		SDL_RenderPresent(m_renderer);
 	}
 
-	void Renderer::Draw(std::shared_ptr<Texture> texture, const Vector2& position, float angle)
+	void Renderer::Draw(std::shared_ptr<Texture> texture, const Vector2& position, float angle, const Vector2& scale,const Vector2& reg_point)
 	{
 		Vector2 size = texture->GetSize();
+		size = size * scale;
+
+		Vector2 origin = size * reg_point;
+
+		Vector2 t_position = position-origin;
 
 		SDL_Rect dest;
 		// !! make sure to cast to int to prevent compiler warnings 
-		dest.x = position.x;// !! set to position x 
-		dest.y = position.y;// !! set to position y 
+		dest.x = t_position.x;// !! set to position x 
+		dest.y = t_position.y;// !! set to position y 
 		dest.w = texture->GetSize().x;// !! set to size x 
 			dest.h = texture->GetSize().y; // !! set to size y 
 
-			SDL_RenderCopyEx(m_renderer, texture->m_texture, nullptr, &dest, angle, nullptr, SDL_FLIP_NONE);
+
+			SDL_Point center{ (int)origin.x,(int)origin.y };
+			SDL_RenderCopyEx(m_renderer, texture->m_texture, nullptr, &dest, angle, &center, SDL_FLIP_NONE);
+	}
+
+	void Renderer::Draw(std::shared_ptr<Texture> texture, const Transform& transform, const Vector2& reg_point)
+	{
+		Vector2 size = texture->GetSize();
+		size = size * transform.scale;
+
+		Vector2 origin = size * reg_point;
+
+		Vector2 t_position = transform.position - origin;
+
+		SDL_Rect dest;
+		// !! make sure to cast to int to prevent compiler warnings 
+		dest.x = t_position.x;// !! set to position x 
+		dest.y = t_position.y;// !! set to position y 
+		dest.w = texture->GetSize().x;// !! set to size x 
+		dest.h = texture->GetSize().y; // !! set to size y 
+
+
+		SDL_Point center{ (int)origin.x,(int)origin.y };
+		SDL_RenderCopyEx(m_renderer, texture->m_texture, nullptr, &dest, transform.rotation, &center, SDL_FLIP_NONE);
 	}
 
 	void Renderer::DrawLine(float x1, float y1, float x2, float y2)

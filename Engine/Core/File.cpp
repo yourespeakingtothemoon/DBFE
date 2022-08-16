@@ -1,4 +1,5 @@
 #include "File.h"
+#include "Logger.h"
 #include <filesystem>
 #include <fstream>
 namespace dbf {
@@ -22,7 +23,11 @@ namespace dbf {
 	}
 	bool ReadFile(const std::string& pathname, std::string& buffer)
 	{
-		if (!FileExists(pathname)) return false;
+		if (!FileExists(pathname))
+		{
+			LOG("Error could not read file to", pathname.c_str());
+			return false;
+		}
 		size_t size;
 		//get file and buffer size
 		GetFileSize(pathname, size);

@@ -1,6 +1,7 @@
 #pragma once 
 #include "..\Math\Vector2.h" 
 #include "renderer.h"
+#include "Resource\Resource.h"
 #include <string> 
 
 struct SDL_Texture;
@@ -12,7 +13,7 @@ namespace dbf
 
 	class Renderer;
 
-	class Texture
+	class Texture : public Resource
 	{
 		
 		
@@ -21,6 +22,7 @@ namespace dbf
 		~Texture();
 
 		bool Create(Renderer& renderer, const std::string& filename);
+		bool Create(std::string filename, ...) override;
 
 		Vector2 GetSize() const;
 
