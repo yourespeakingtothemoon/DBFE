@@ -8,7 +8,7 @@
 
 namespace dbf
 {
-	class inpSystem
+	class InpSystem
 	{
 	public:
 		enum class keyState
@@ -20,8 +20,8 @@ namespace dbf
 		};
 
 	public:
-		inpSystem() = default;
-		~inpSystem() = default;
+		InpSystem() = default;
+		~InpSystem() = default;
 
 		void initialize();
 		void shutdown();

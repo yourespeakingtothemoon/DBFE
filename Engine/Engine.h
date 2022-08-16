@@ -1,8 +1,8 @@
 #pragma once
 //core
-#include "Core/memMgmt.h"
+#include "Core/MemoryMgmt.h"
 #include "Core/File.h"
-#include "Core/timeMgmt.h"
+#include "Core/TimeMgmt.h"
 //maths
 #include "Math/MathUtils.h"
 #include "Math/Random.h"
@@ -18,7 +18,7 @@
 namespace dbf
 {
 	extern Renderer g_renderer;
-	extern inpSystem g_inputSystem;
-	extern timeMgmt g_time;
+	extern InpSystem g_inputSystem;
+	extern TimeMgmt g_time;
 	extern AudioSystem g_audio;
 }

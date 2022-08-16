@@ -1,8 +1,8 @@
-#include "timeMgmt.h"
+#include "TimeMgmt.h"
 
 namespace dbf
 {
-	void timeMgmt::gameTick()
+	void TimeMgmt::gameTick()
 	{
 		clock_duration duration = clock::now() - m_startTimePoint;
 		time = duration.count() / static_cast<float>(clock_duration::period::den);

@@ -20,7 +20,7 @@ namespace dbf
 	const uint32_t key_left = SDL_SCANCODE_LEFT;
 	const uint32_t key_right = SDL_SCANCODE_RIGHT;
 
-	void inpSystem::initialize()
+	void InpSystem::initialize()
 	{
 		int numKeys;
 		// get pointer to sdl keyboard states and number of keys
@@ -36,12 +36,12 @@ namespace dbf
 		m_prevKeyboardState = m_keyboardState;
 	}
 
-	void inpSystem::shutdown()
+	void InpSystem::shutdown()
 	{
 		//
 	}
 
-	void inpSystem::update()
+	void InpSystem::update()
 	{
 		SDL_Event event;
 		SDL_PollEvent(&event);
@@ -63,7 +63,7 @@ namespace dbf
 		m_mouseButtonState[2] = buttons & SDL_BUTTON_RMASK; // buttons [0100] & [0RML]
 	}
 
-	inpSystem::keyState inpSystem::getKeyState(uint32_t key)
+	InpSystem::keyState InpSystem::getKeyState(uint32_t key)
 	{
 		keyState keyState = keyState::Idle;
 
@@ -82,7 +82,7 @@ namespace dbf
 		return keyState;
 	}
 
-	inpSystem::keyState inpSystem::getKeyState(const std::string& key)
+	InpSystem::keyState InpSystem::getKeyState(const std::string& key)
 	{
 		//if (m_keyMap.find(key) != m_keyMap.end())
 		//{
@@ -92,7 +92,7 @@ namespace dbf
 		return keyState::Idle;
 	}
 
-	bool inpSystem::getKeyDown(const std::string& key)
+	bool InpSystem::getKeyDown(const std::string& key)
 	{
 		//if (m_keyMap.find(key) != m_keyMap.end())
 		//{
@@ -102,7 +102,7 @@ namespace dbf
 		return false;
 	}
 
-	bool inpSystem::getPreviousKeyDown(const std::string& key)
+	bool InpSystem::getPreviousKeyDown(const std::string& key)
 	{
 		//if (m_keyMap.find(key) != m_keyMap.end())
 		//{
@@ -113,7 +113,7 @@ namespace dbf
 	}
 
 
-	inpSystem::keyState inpSystem::getButtonState(uint32_t button)
+	InpSystem::keyState InpSystem::getButtonState(uint32_t button)
 	{
 		keyState keyState = keyState::Idle;
 

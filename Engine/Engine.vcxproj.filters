@@ -9,9 +9,6 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Source\Core">
-      <UniqueIdentifier>{be422acd-3065-4cc8-8077-276f999ca0f6}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source\View">
       <UniqueIdentifier>{2cd9397c-00e1-4607-b5bc-6a4b68f7222f}</UniqueIdentifier>
     </Filter>
@@ -27,46 +24,55 @@
     <Filter Include="Source\Controller\Math">
       <UniqueIdentifier>{d5895fbd-46eb-48b2-8e6a-595cb3e36998}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Framework">
-      <UniqueIdentifier>{2841abee-73f0-4953-84ad-7816dced2dfe}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source\View\Audio">
       <UniqueIdentifier>{576f9335-f831-4851-b8f2-8ca799dc02c0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Framework\Components">
+    <Filter Include="Source\Model">
+      <UniqueIdentifier>{07f243c6-6f63-453b-ba2d-598410c7d65d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Model\Framework">
+      <UniqueIdentifier>{2841abee-73f0-4953-84ad-7816dced2dfe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Model\Framework\Components">
       <UniqueIdentifier>{76ea4b44-43bb-4844-9409-e1fd811e9a97}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Resource">
+    <Filter Include="Source\Model\Core">
+      <UniqueIdentifier>{be422acd-3065-4cc8-8077-276f999ca0f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\DAL">
+      <UniqueIdentifier>{05df9c03-d20f-408a-9f3d-05c62e277972}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\DAL\Resource">
       <UniqueIdentifier>{086c8ff0-c6e7-4644-8087-16e9980303ba}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Math\mathUtils.cpp">
+    <ClCompile Include="Math\MathUtils.cpp">
       <Filter>Source\Controller\Math</Filter>
     </ClCompile>
-    <ClCompile Include="Core\memMgmt.cpp">
-      <Filter>Source\Core</Filter>
+    <ClCompile Include="Core\MemoryMgmt.cpp">
+      <Filter>Source\Model\Core</Filter>
     </ClCompile>
-    <ClCompile Include="Renderer\renderer.cpp">
+    <ClCompile Include="Renderer\Renderer.cpp">
       <Filter>Source\View\Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="Renderer\model.cpp">
+    <ClCompile Include="Renderer\Model.cpp">
       <Filter>Source\View\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="Core\File.cpp">
-      <Filter>Source\Core</Filter>
+      <Filter>Source\Model\Core</Filter>
     </ClCompile>
-    <ClCompile Include="Core\timeMgmt.cpp">
-      <Filter>Source\Core</Filter>
+    <ClCompile Include="Core\TimeMgmt.cpp">
+      <Filter>Source\Model\Core</Filter>
     </ClCompile>
     <ClCompile Include="Input\InputSystem.cpp">
       <Filter>Source\View\Input</Filter>
     </ClCompile>
     <ClCompile Include="Framework\Actor.cpp">
-      <Filter>Source\Framework</Filter>
+      <Filter>Source\Model\Framework</Filter>
     </ClCompile>
     <ClCompile Include="Framework\Scene.cpp">
-      <Filter>Source\Framework</Filter>
+      <Filter>Source\Model\Framework</Filter>
     </ClCompile>
     <ClCompile Include="Engine.cpp">
       <Filter>Source</Filter>
@@ -84,16 +90,16 @@
       <Filter>Source\View\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="Core\Logger.cpp">
-      <Filter>Source\Core</Filter>
+      <Filter>Source\Model\Core</Filter>
     </ClCompile>
     <ClCompile Include="Math\Vector2.cpp">
       <Filter>Source\Controller\Math</Filter>
     </ClCompile>
-    <ClCompile Include="Math\color.cpp">
+    <ClCompile Include="Math\Color.cpp">
       <Filter>Source\Controller\Math</Filter>
     </ClCompile>
     <ClCompile Include="Framework\Components\PlayComponents.cpp">
-      <Filter>Source\Framework\Components</Filter>
+      <Filter>Source\Model\Framework\Components</Filter>
     </ClCompile>
     <ClCompile Include="Math\Mat2x2.cpp">
       <Filter>Source\Controller\Math</Filter>
@@ -102,33 +108,33 @@
       <Filter>Source\Controller\Math</Filter>
     </ClCompile>
     <ClCompile Include="Resource\ResourceMgmt.cpp">
-      <Filter>Source\Resource</Filter>
-    </ClCompile>
-    <ClCompile Include="Framework\Components\RenderComponent.cpp">
-      <Filter>Source</Filter>
+      <Filter>Source\DAL\Resource</Filter>
     </ClCompile>
     <ClCompile Include="Framework\Components\ModelComponent.cpp">
-      <Filter>Source</Filter>
+      <Filter>Source\Model\Framework\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Components\RenderComponent.cpp">
+      <Filter>Source\Model\Framework\Components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Math\mathUtils.h">
+    <ClInclude Include="Math\MathUtils.h">
       <Filter>Source\Controller\Math</Filter>
     </ClInclude>
-    <ClInclude Include="Core\memMgmt.h">
-      <Filter>Source\Core</Filter>
+    <ClInclude Include="Core\MemoryMgmt.h">
+      <Filter>Source\Model\Core</Filter>
     </ClInclude>
-    <ClInclude Include="Renderer\renderer.h">
+    <ClInclude Include="Renderer\Renderer.h">
       <Filter>Source\View\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="Renderer\model.h">
+    <ClInclude Include="Renderer\Model.h">
       <Filter>Source\View\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="Core\File.h">
-      <Filter>Source\Core</Filter>
+      <Filter>Source\Model\Core</Filter>
     </ClInclude>
-    <ClInclude Include="Core\timeMgmt.h">
-      <Filter>Source\Core</Filter>
+    <ClInclude Include="Core\TimeMgmt.h">
+      <Filter>Source\Model\Core</Filter>
     </ClInclude>
     <ClInclude Include="Input\InputSystem.h">
       <Filter>Source\View\Input</Filter>
@@ -142,17 +148,17 @@
     <ClInclude Include="Math\Vector2.h">
       <Filter>Source\Controller\Math</Filter>
     </ClInclude>
-    <ClInclude Include="Math\color.h">
+    <ClInclude Include="Math\Color.h">
       <Filter>Source\Controller\Math</Filter>
     </ClInclude>
     <ClInclude Include="Framework\Actor.h">
-      <Filter>Source\Framework</Filter>
+      <Filter>Source\Model\Framework</Filter>
     </ClInclude>
     <ClInclude Include="Framework\GameObject.h">
-      <Filter>Source\Framework</Filter>
+      <Filter>Source\Model\Framework</Filter>
     </ClInclude>
     <ClInclude Include="Framework\Scene.h">
-      <Filter>Source\Framework</Filter>
+      <Filter>Source\Model\Framework</Filter>
     </ClInclude>
     <ClInclude Include="Audio\AudioSystem.h">
       <Filter>Source\View\Audio</Filter>
@@ -167,19 +173,19 @@
       <Filter>Source\View\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="Framework\Game.h">
-      <Filter>Source\Framework</Filter>
+      <Filter>Source\Model\Framework</Filter>
     </ClInclude>
     <ClInclude Include="Renderer\Texture.h">
       <Filter>Source\View\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="Core\Logger.h">
-      <Filter>Source\Core</Filter>
+      <Filter>Source\Model\Core</Filter>
     </ClInclude>
     <ClInclude Include="Framework\Components\PlayComponents.h">
-      <Filter>Source\Framework\Components</Filter>
+      <Filter>Source\Model\Framework\Components</Filter>
     </ClInclude>
     <ClInclude Include="Framework\Components\Component.h">
-      <Filter>Source\Framework\Components</Filter>
+      <Filter>Source\Model\Framework\Components</Filter>
     </ClInclude>
     <ClInclude Include="Math\Mat2x2.h">
       <Filter>Source\Controller\Math</Filter>
@@ -191,25 +197,25 @@
       <Filter>Source\Controller\Math</Filter>
     </ClInclude>
     <ClInclude Include="Framework\Components\ModelComponent.h">
-      <Filter>Source\Framework\Components</Filter>
+      <Filter>Source\Model\Framework\Components</Filter>
     </ClInclude>
     <ClInclude Include="Resource\Resource.h">
-      <Filter>Source\Resource</Filter>
+      <Filter>Source\DAL\Resource</Filter>
     </ClInclude>
     <ClInclude Include="Resource\ResourceMgmt.h">
-      <Filter>Source\Resource</Filter>
+      <Filter>Source\DAL\Resource</Filter>
     </ClInclude>
     <ClInclude Include="Framework\Components\AudioComponent.h">
-      <Filter>Source\Framework\Components</Filter>
+      <Filter>Source\Model\Framework\Components</Filter>
     </ClInclude>
     <ClInclude Include="Framework\Components\PhysicsComponent.h">
-      <Filter>Source\Framework\Components</Filter>
+      <Filter>Source\Model\Framework\Components</Filter>
     </ClInclude>
     <ClInclude Include="Framework\Components\RenderComponent.h">
-      <Filter>Source\Framework\Components</Filter>
+      <Filter>Source\Model\Framework\Components</Filter>
     </ClInclude>
     <ClInclude Include="Framework\Components\SpriteComponent.h">
-      <Filter>Source\Framework\Components</Filter>
+      <Filter>Source\Model\Framework\Components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

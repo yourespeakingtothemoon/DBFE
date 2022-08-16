@@ -1,4 +1,4 @@
-#include "renderer.h"
+#include "Renderer.h"
 #include "Texture.h"
 #include "Math/Transform.h"
 #include "Math/mathUtils.h"

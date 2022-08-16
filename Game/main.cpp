@@ -39,7 +39,7 @@ int main()
 		dbf::g_inputSystem.update();
 		dbf::g_audio.Update();
 		//check for esc
-		if (dbf::g_inputSystem.getKeyState(dbf::key_escape) == dbf::inpSystem::keyState::Pressed) quit = true;
+		if (dbf::g_inputSystem.getKeyState(dbf::key_escape) == dbf::InpSystem::keyState::Pressed) quit = true;
 		angle += 90*dbf::g_time.deltaTime;
 		// render
 		dbf::g_renderer.BeginFrame();

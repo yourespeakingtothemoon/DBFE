@@ -3,7 +3,7 @@
 
 namespace dbf
 {
-	class timeMgmt
+	class TimeMgmt
 	{
 	private:
 		using clock = std::chrono::high_resolution_clock;
@@ -11,7 +11,7 @@ namespace dbf
 		using clock_rep = clock::rep;
 
 	public:
-		timeMgmt() :
+		TimeMgmt() :
 			m_startTimePoint{ clock::now() },
 			m_frameTimePoint{ clock::now() }
 		{}

@@ -1,5 +1,5 @@
-#include "mathUtils.h"
-#include "mathUtils.h"
+#include "MathUtils.h"
+#include "MathUtils.h"
 
 namespace math
 {
