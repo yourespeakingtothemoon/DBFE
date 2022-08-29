@@ -9,7 +9,7 @@ namespace dbf
 	}
 	void SpriteComponent::draw(Renderer& renderer)
 	{
-		renderer.draw(m_texture, source, m_owner->m_transform);
+		renderer.draw(m_texture, GetSource(), m_owner->m_transform);
 	}
 
 	bool SpriteComponent::write(const rapidjson::Value& value) const

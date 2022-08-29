@@ -35,6 +35,12 @@ namespace dbf
 		template<typename T>
 		T* GetActor();
 
+		template<typename T = Actor>
+		T* getActorByName(const std::string& name);
+
+		template<typename T = Actor>
+		std::vector<T*> getActorsByTag(const std::string& tag);
+
 		Game* GetGame() { return m_game; }
 
 	private:
@@ -54,5 +60,34 @@ namespace dbf
 		}
 
 		return nullptr;
+	}
+	template<typename T>
+	inline T* Scene::getActorByName(const std::string& name)
+	{
+		for(auto& actor : m_actors)
+		{
+			if (actor->getName==name)
+				{
+				return dynamic_cast<T*>(actor.get());
+					 }
+		}
+
+		return nullptr;
+	}
+	template<typename T>
+	inline std::vector<T*> Scene::getActorsByTag(const std::string& tag)
+	{
+		std::vector<T*> result;
+
+		for (auto& actor : m_actors)
+		{
+			if (actor->getTag == tag)
+			{
+				T* tagActor = dynamic_cast<T*>(actor.get());
+				if (tagActor) result.push_back(tagActor);
+			}
+		}
+
+		return result;
 	}
 }

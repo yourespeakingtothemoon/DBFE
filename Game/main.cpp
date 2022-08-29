@@ -13,6 +13,7 @@ int main()
 	dbf::g_audioSystem.init();
 	dbf::g_physicsSystem.init();
 	dbf::g_resourceManager.init();
+	//dbf::g_eventManager.init();
 
 	dbf::Engine::instance().reg();
 
@@ -33,6 +34,7 @@ int main()
 		dbf::g_inputSystem.update();
 		dbf::g_audioSystem.update();
 		dbf::g_physicsSystem.update();
+		//dbf::g_eventManager.update();
 		//test for exit
 		if (dbf::g_inputSystem.queryKeyDown(dbf::key_escape)) exit = true;
 		//game update

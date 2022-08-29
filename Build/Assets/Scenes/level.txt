@@ -21,7 +21,7 @@
             }
          ]
       },
-      
+
       {
          "type":"Actor",
          "name":"Player",
@@ -50,10 +50,8 @@
             },
             {
                "type":"CollisionComponent",
-               "data.size":[
-                  80,
-                  80
-               ]
+               "data.size": [32, 32],
+              "data.restitution": 0.7
             },
             {
                "type":"SpriteAnimComponent",

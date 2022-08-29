@@ -23,6 +23,10 @@ namespace dbf
 		static Mat3x3 createRotate(float rad);
 		static Mat3x3 createTranslation(const Vector2& translate);
 
+		Vector2 GetTranslation() const;
+		float GetRotation() const;
+		Vector2 GetScale() const;
+
 	};
 
 	inline Mat3x3::Mat3x3(const Vector3& row1, const Vector3& row2, const Vector3& row3)
@@ -115,6 +119,36 @@ namespace dbf
 		//mx[2][2] = 1;
 
 		return mx;
+	}
+
+	inline Vector2 Mat3x3::GetTranslation() const
+	{
+		//translate diagram
+		// 1  0  x 
+		// 0  1  y 
+		// 0  0  1 
+
+		return { rows[0][2], rows[1][2] };
+	}
+
+	inline float Mat3x3::GetRotation() const
+	{
+		// cos -sin  0 
+		// sin  cos  0 
+		//  0    0   1 
+
+		// y = sin(angle) = rows[1][0] 
+		// x = cos(angle) = rows[0][0] 
+
+		return std::atan2(rows[1][0], rows[0][0]);
+	}
+
+	inline Vector2 Mat3x3::GetScale() const
+	{
+		Vector2 x = { rows[0][0], rows[0][1] };
+		Vector2 y = { rows[1][0], rows[1][1] };
+
+		return { x.Length(), y.Length() };
 	}
 
 

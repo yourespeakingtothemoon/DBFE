@@ -20,7 +20,7 @@ namespace dbf
 		virtual bool read(const rapidjson::Value& value) override;
 
 	public:
-		Rectangle source;
+		//Rectangle source;
 		std::shared_ptr<Texture> m_texture;
 	};
 }

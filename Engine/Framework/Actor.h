@@ -30,11 +30,12 @@ namespace dbf
 		void addChild(std::unique_ptr<Actor> child);
 
 		void addComponent(std::unique_ptr<Component> component);
+
 		template<typename T>
 		T* getComponent();
 
 		virtual void OnCollision(Actor* other) {}
-		float GetRadius() { return 0; }// m_model.GetRadius()* std::max(m_transform.scale.x, m_transform.scale.y); }
+		float GetRadius() { return 0; }
 		
 		const std::string& getTag() { return tag; }
 		void setTag(const std::string& tag) { this->tag = tag; }
@@ -43,6 +44,7 @@ namespace dbf
 
 		//destroy
 		void flipDestroy() { m_destroy = true; }
+		bool queryDestroy() { return m_destroy; }
 
 		void setActive(bool active = true) { this->active = active; }
 		bool queryActive() { return active; }
@@ -60,7 +62,7 @@ namespace dbf
 		bool active = true;
 		bool m_destroy = false;
 
-		Scene* m_scene = nullptr; //can make gets and sets
+		Scene* m_scene = nullptr;
 		Actor* m_parent = nullptr;
 
 		std::vector<std::unique_ptr<Component>> m_components;

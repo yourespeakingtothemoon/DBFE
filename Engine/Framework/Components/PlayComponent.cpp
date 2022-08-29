@@ -60,7 +60,15 @@ namespace dbf
 
 	void PlayComponent::enterCollide(Actor* other)
 	{
-		std::cout << "Player enter\n";
+		//if coind
+		//Event event;
+		//event.name="event_add_points";
+		//event.data = 100;
+
+		//g_eventManager.Notify(event);
+
+		//other->flipDestroy();
+		//std::cout << "Player enter\n";
 	}
 	void PlayComponent::exitCollide(Actor* other)
 	{

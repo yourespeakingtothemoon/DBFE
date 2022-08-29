@@ -28,10 +28,8 @@
 				},
 				{
 					"type":"CollisionComponent",
-					"data.size":[
-						16,
-						32
-					]
+					"data.size": [32, 32],
+					"data.restitution": 0.7
 				}
 			]
 		},
@@ -63,10 +61,8 @@
 				},
 				{
 					"type":"CollisionComponent",
-					"data.size":[
-						8,
-						32
-					]
+					"data.size": [32, 32],
+					"data.restitution": 0.7
 				}
 			]
 		},
@@ -98,10 +94,8 @@
 				},
 				{
 					"type":"CollisionComponent",
-					"data.size":[
-						16,
-						32
-					]
+					"data.size": [32, 32],
+				"data.restitution": 0.7
 				}
 			]
 		},

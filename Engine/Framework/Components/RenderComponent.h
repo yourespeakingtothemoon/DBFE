@@ -1,5 +1,6 @@
 #pragma once
 #include "Component.h"
+#include "Math/Rectangle.h"
 namespace dbf
 {
 	class Renderer;
@@ -8,5 +9,10 @@ namespace dbf
 	{
 	public:
 		virtual void draw(Renderer& renderer) = 0;
+
+		virtual Rectangle& GetSource() { return source; }
+
+	protected:
+		Rectangle source;
 	};
 }

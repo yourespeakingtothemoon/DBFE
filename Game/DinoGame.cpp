@@ -17,7 +17,6 @@ void DinoGame::init()
 			LOG("could not load scene %s", sceneName.c_str());
 			continue;
 		}
-		//assert(success);
 		m_scene->read(document);
 	}
 	m_scene->init();
@@ -31,6 +30,8 @@ void DinoGame::init()
 
 		m_scene->Add(std::move(actor));
 	}*/
+
+	//dbf::g_eventManager.subscribe("event_add_points", std::bind(&DinoGame::onAddScore, this, std::placeholders::_1) );
 }
 
 void DinoGame::shutdown()
@@ -48,3 +49,8 @@ void DinoGame::draw(dbf::Renderer& renderer)
 {
 	m_scene->draw(renderer);
 }
+
+/*void DinoGame::onAddScore(const dbf::Event& event)
+{
+	//std::get<int>(_event.data)
+}*/

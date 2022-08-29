@@ -14,7 +14,7 @@ namespace dbf
 	public:
 		std::string name;
 		GameObject* receiver = nullptr;
-		std::variant<int, bool, float, std::string> eventData;
+		std::variant <int, bool, float, std::string> eventData;
 
 	};
 }

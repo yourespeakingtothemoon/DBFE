@@ -7,11 +7,20 @@ namespace dbf
     void CollisionComponent::init()
     {
         auto component = m_owner->getComponent<RBPhysicsComponent>();
+
         if (component)
         {
+            if (data.size.x == 0 and data.size.y == 0) 
+                {
+                    auto renderComponent = m_owner->getComponent<RenderComponent>();
+                    if (renderComponent)
+                    {
+                        data.size = Vector2{ renderComponent->GetSource().h,renderComponent->GetSource().y};
+                    }
+                }
+
             g_physicsSystem.SetCollisionBox(component->m_body, data, m_owner);
         }
-
     }
 
     void CollisionComponent::update()

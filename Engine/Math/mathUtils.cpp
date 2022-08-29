@@ -2,8 +2,8 @@
 
 namespace math
 {
-	int sqr(int v)
+	/*int sqr(int v)
 	{
 		return v * v;
-	}
+	}*/
 }

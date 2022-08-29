@@ -35,7 +35,7 @@ namespace dbf
 		{
 			// check if 'name' member exists and is of type 
 			if (!value.HasMember(name.c_str())) return false;
-			if (value.HasMember(name.c_str()) == false || value[name.c_str()].IsInt() == false)
+			if (!value[name.c_str()].IsInt())
 			{
 				LOG("error reading json data %s", name.c_str());
 				return false;
@@ -51,7 +51,7 @@ namespace dbf
 		{
 			// check if 'name' member exists and is of type 
 			if (!value.HasMember(name.c_str())) return false;
-			if (value.HasMember(name.c_str()) == false || value[name.c_str()].IsNumber() == false)
+			if (!value[name.c_str()].IsNumber())
 			{
 				LOG("error reading json data %s", name.c_str());
 				return false;
@@ -67,7 +67,7 @@ namespace dbf
 		{
 			// check if 'name' member exists and is of type 
 			if (!value.HasMember(name.c_str())) return false;
-			if (value.HasMember(name.c_str()) == false || value[name.c_str()].IsBool() == false)
+			if (!value[name.c_str()].IsBool())
 			{
 				LOG("error reading json data %s", name.c_str());
 				return false;
@@ -83,7 +83,7 @@ namespace dbf
 		{
 			// check if 'name' member exists and is of type 
 			if (!value.HasMember(name.c_str())) return false;
-			if (value.HasMember(name.c_str()) == false || value[name.c_str()].IsString() == false)
+			if (!value[name.c_str()].IsString())
 			{
 				LOG("error reading json data %s", name.c_str());
 				return false;
@@ -99,7 +99,7 @@ namespace dbf
 		{
 			// check if 'name' member exists and is an array with 2 elements 
 			if (!value.HasMember(name.c_str())) return false;
-			if (value.HasMember(name.c_str()) == false || value[name.c_str()].IsArray()	== false || value[name.c_str()].Size() != 2)
+			if (!value[name.c_str()].IsArray() || value[name.c_str()].Size() != 2)
 			{
 				LOG("error reading json data %s", name.c_str());
 				return false;
@@ -126,9 +126,9 @@ namespace dbf
 		
 		bool Get(const rapidjson::Value& value, const std::string& name, Color& data)
 		{
-			// check if 'name' member exists and is an array with 2 elements 
+			// check if 'name' member exists and is an array with 4 elements 
 			if (!value.HasMember(name.c_str())) return false;
-			if (value.HasMember(name.c_str()) == false || value[name.c_str()].IsArray() == false || value[name.c_str()].Size() != 4)
+			if (!value[name.c_str()].IsArray() || value[name.c_str()].Size() != 4)
 			{
 				LOG("error reading json data %s", name.c_str());
 				return false;
@@ -155,9 +155,9 @@ namespace dbf
 
 		bool Get(const rapidjson::Value& value, const std::string& name, Rectangle& data)
 		{
-			// check if 'name' member exists and is an array with 2 elements 
+			// check if 'name' member exists and is an array with 4 elements 
 			if (!value.HasMember(name.c_str())) return false;
-			if (value.HasMember(name.c_str()) == false || value[name.c_str()].IsArray() == false || value[name.c_str()].Size() != 4)
+			if (!value[name.c_str()].IsArray() || value[name.c_str()].Size() != 4)
 			{
 				LOG("error reading json data %s", name.c_str());
 				return false;
@@ -178,8 +178,9 @@ namespace dbf
 
 		bool Get(const rapidjson::Value& value, const std::string& name, std::vector<std::string>& data)
 		{ 
+			//check if member exists
 			if (!value.HasMember(name.c_str())) return false;
-
+			//check if it is an array
 			if (!value[name.c_str()].IsArray())
 			{
 				LOG("error reading json data %s", name.c_str());
@@ -207,6 +208,8 @@ namespace dbf
 
 		bool Get(const rapidjson::Value& value, const std::string& name, std::vector<int>& data)
 		{
+
+			//yeah
 			if (!value.HasMember(name.c_str())) return false;
 
 			if (!value[name.c_str()].IsArray())

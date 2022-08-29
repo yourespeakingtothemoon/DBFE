@@ -17,6 +17,8 @@ namespace dbf
 		virtual bool write(const rapidjson::Value& value) const override;
 		virtual bool read(const rapidjson::Value& value) override;
 
+		Rectangle& GetSource() override;
+
 	public:
 		float fps = 0;
 		int num_columns = 0;
@@ -28,15 +30,6 @@ namespace dbf
 
 		int frame = 0;
 		float frameTimer = 0;
-
-		Rectangle source;
 		std::shared_ptr<Texture> m_texture;
-
-
-	protected:
-
-
-
-
 	};
 }

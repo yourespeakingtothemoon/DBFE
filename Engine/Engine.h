@@ -39,7 +39,11 @@
 #include "Renderer/Texture.h"
 #include "Renderer/Model.h"
 
+
 #include <memory>
+#include<variant>
+#include<vector>
+#include<list>
 
 
 namespace dbf 
