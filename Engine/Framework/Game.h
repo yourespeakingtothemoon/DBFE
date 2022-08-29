@@ -1,7 +1,8 @@
 #pragma once
 #include <memory>
-namespace dbf {
 
+namespace dbf
+{
 	class Renderer;
 	class Scene;
 
@@ -11,21 +12,18 @@ namespace dbf {
 		Game() = default;
 		virtual ~Game() = default;
 
-		virtual void Initialize() = 0;
-		virtual void Shutdown() = 0;
+		virtual void init() = 0;
+		virtual void shutdown() = 0;
 
-		virtual void Update() = 0;
-		virtual void Draw(Renderer& renderer) = 0;
+		virtual void update() = 0;
+		virtual void draw(Renderer& renderer) = 0;
 
 		int getScore() { return m_score; }
-		float getHealth() { return playerHealth; }
-		void addPoint(int points) { m_score += points; }
-		void hit(int damage) { playerHealth-=damage;}
-		void heal() { playerHealth += 5; }
+		void addPoints(int points) { m_score += points; }
+
 	protected:
-		float playerHealth = 10;
 		std::unique_ptr<Scene> m_scene;
 		int m_score = 0;
-		int m_hiScore = 0;
+
 	};
 }

@@ -2,133 +2,110 @@
 #include <SDL.h>
 #include <iostream>
 
-namespace dbf
+namespace dbf 
 {
-	const uint32_t button_left = 0;
-	const uint32_t button_middle = 1;
-	const uint32_t button_right = 2;
-
 	const uint32_t key_space = SDL_SCANCODE_SPACE;
-	const uint32_t key_enter = SDL_SCANCODE_RETURN;
-	const uint32_t key_escape = SDL_SCANCODE_ESCAPE;
 	const uint32_t key_up = SDL_SCANCODE_UP;
+	const uint32_t key_down = SDL_SCANCODE_DOWN;
+	const uint32_t key_left = SDL_SCANCODE_LEFT;
+	const uint32_t key_right = SDL_SCANCODE_RIGHT;
+	const uint32_t key_escape = SDL_SCANCODE_ESCAPE;
+
+	//WASD
 	const uint32_t key_w = SDL_SCANCODE_W;
 	const uint32_t key_a = SDL_SCANCODE_A;
 	const uint32_t key_s = SDL_SCANCODE_S;
 	const uint32_t key_d = SDL_SCANCODE_D;
-	const uint32_t key_down = SDL_SCANCODE_DOWN;
-	const uint32_t key_left = SDL_SCANCODE_LEFT;
-	const uint32_t key_right = SDL_SCANCODE_RIGHT;
 
-	void InpSystem::initialize()
+	const uint32_t key_1 = SDL_SCANCODE_1;
+	const uint32_t key_2 = SDL_SCANCODE_2;
+	const uint32_t key_3 = SDL_SCANCODE_3;
+
+	//mouse
+	const uint32_t button_left = 0;
+	const uint32_t button_middle = 1;
+	const uint32_t button_right = 2;
+
+	void InpSystem::init()
 	{
-		int numKeys;
-		// get pointer to sdl keyboard states and number of keys
-		const uint8_t* keyboardState = SDL_GetKeyboardState(&numKeys);
+		const uint8_t* keyboardState = SDL_GetKeyboardState(&m_numKeys);
 
-		// resize of keyboard state using numKeys for size
-		m_keyboardState.resize(numKeys);
+		m_keyboardState.resize(m_numKeys);
+		std::copy(keyboardState, keyboardState + m_numKeys, m_keyboardState.begin());
 
-		// copy the sdl key states to keyboard state
-		std::copy(keyboardState, keyboardState + numKeys, m_keyboardState.begin());
-
-		// set previous keyboard state to current keyboard state
 		m_prevKeyboardState = m_keyboardState;
 	}
-
+	
 	void InpSystem::shutdown()
 	{
 		//
-	}
 
+	}
+	
 	void InpSystem::update()
 	{
 		SDL_Event event;
 		SDL_PollEvent(&event);
 
-		// save previous keyboard state
+		//save previous keyboard state
 		m_prevKeyboardState = m_keyboardState;
 
-		// get current keyboard state
+		//get current keyboard state
 		const uint8_t* keyboardState = SDL_GetKeyboardState(nullptr);
-		std::copy(keyboardState, keyboardState + m_keyboardState.size(), m_keyboardState.begin());
+		std::copy(keyboardState, keyboardState + m_numKeys, m_keyboardState.begin());
 
-		// mouse
+		//std::cout << (bool)m_keyboardState[SDL_SCANCODE_SPACE] << std::endl;
+		/*for (auto state : m_keyboardState)
+		{
+			std::cout << (bool)state << std::endl;
+		}
+		std::cout << std::endl;
+		*/
+
+		//Mouse
 		m_prevMouseButtonState = m_mouseButtonState;
 		int x, y;
 		uint32_t buttons = SDL_GetMouseState(&x, &y);
-		m_mousePosition = dbf::Vector2{ (float)x , (float)y };
-		m_mouseButtonState[0] = buttons & SDL_BUTTON_LMASK; // buttons [0001] & [0RML]
-		m_mouseButtonState[1] = buttons & SDL_BUTTON_MMASK; // buttons [0010] & [0RML]
-		m_mouseButtonState[2] = buttons & SDL_BUTTON_RMASK; // buttons [0100] & [0RML]
+		m_mousePosition = dbf::Vector2{ x , y };
+		m_mouseButtonState[0] = buttons & SDL_BUTTON_LMASK; // buttons [0001] & [0RML] 
+		m_mouseButtonState[1] = buttons & SDL_BUTTON_MMASK; // buttons [0010] & [0RML] 
+		m_mouseButtonState[2] = buttons & SDL_BUTTON_RMASK; // buttons [0100] & [0RML] 
+
+
+
 	}
 
-	InpSystem::keyState InpSystem::getKeyState(uint32_t key)
+	InpSystem::keyState InpSystem::queryKeyState(uint32_t key)
 	{
-		keyState keyState = keyState::Idle;
+		keyState keyState;
 
-		bool keyDown = getKeyDown(key);
-		bool prevKeyDown = getPreviousKeyDown(key);
+		bool keyDown = queryKeyDown(key);
+		bool prevKeyDown = GetPreviousKeyDown(key);
 
-		if (keyDown)
-		{
-			keyState = (prevKeyDown) ? keyState::Held : keyState::Pressed;
-		}
-		else
-		{
-			keyState = (prevKeyDown) ? keyState::Released : keyState::Idle;
-		}
+		if (keyDown && prevKeyDown) keyState = keyState::Held;
+		if (keyDown && !prevKeyDown) keyState = keyState::Pressed;
+		if (!keyDown && prevKeyDown) keyState = keyState::Released;
+		if (!keyDown && !prevKeyDown) keyState = keyState::Idle;
+	
 
 		return keyState;
 	}
 
-	InpSystem::keyState InpSystem::getKeyState(const std::string& key)
-	{
-		//if (m_keyMap.find(key) != m_keyMap.end())
-		//{
-		//	return GetKeyState(m_keyMap[key]);
-		//}
 
-		return keyState::Idle;
+	InpSystem::keyState InpSystem::GetButtonState(uint32_t button)
+	{
+		keyState buttonState = keyState::Idle;
+
+		bool buttonDown = GetButtonDown(button);
+		bool prevButtonDown = GetPreviousButtonDown(button);
+
+		if (buttonDown && prevButtonDown) buttonState = keyState::Held;
+		if (buttonDown && !prevButtonDown) buttonState = keyState::Pressed;
+		if (!buttonDown && prevButtonDown) buttonState = keyState::Released;
+		if (!buttonDown && !prevButtonDown) buttonState = keyState::Idle;
+
+
+		return buttonState;
 	}
 
-	bool InpSystem::getKeyDown(const std::string& key)
-	{
-		//if (m_keyMap.find(key) != m_keyMap.end())
-		//{
-		//	return m_keyboardState[m_keyMap[key]];
-		//}
-		
-		return false;
-	}
-
-	bool InpSystem::getPreviousKeyDown(const std::string& key)
-	{
-		//if (m_keyMap.find(key) != m_keyMap.end())
-		//{
-		//	return m_prevKeyboardState[m_keyMap[key]];
-		//}
-
-		return false;
-	}
-
-
-	InpSystem::keyState InpSystem::getButtonState(uint32_t button)
-	{
-		keyState keyState = keyState::Idle;
-
-		bool buttonDown = getButtonDown(button);
-		bool prevButtonDown = getPreviousButtonDown(button);
-
-		if (buttonDown)
-		{
-			keyState = (prevButtonDown) ? keyState::Held : keyState::Pressed;
-		}
-		else
-		{
-			keyState = (prevButtonDown) ? keyState::Released : keyState::Idle;
-		}
-
-		return keyState;
-	}
 }

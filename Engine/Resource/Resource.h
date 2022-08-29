@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
-#include <cstdarg>
-namespace dbf
+
+namespace dbf 
 {
 	class Resource
 	{

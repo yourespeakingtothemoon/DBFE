@@ -1,10 +1,11 @@
 #pragma once
 
 #ifdef _DEBUG
-#define LOG(format, ...) dbf::g_logger.Log(format,__VA_ARGS__)
+	#define LOG(format,...) dbf::g_logger.Log(format, __VA_ARGS__) 
 #else
-#define LOG(format,...) ((void)0)
-#endif
+	#define LOG(format, ...) ((void)0)
+#endif // _DEBUG
+
 
 namespace dbf
 {
@@ -16,8 +17,9 @@ namespace dbf
 
 		void Log(const char* format, ...);
 
-	private:
-	};
 
+	private:
+
+	};
 	extern Logger g_logger;
 }

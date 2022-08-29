@@ -12,8 +12,8 @@ namespace dbf
   ResourceMgmt() = default;
   ~ResourceMgmt() = default;
 
-  void Initialize();
-  void Shutdown();
+  void init();
+  void shutdown();
 
   template <typename T, typename ... TArgs>
   std::shared_ptr<T> Get(const std::string& name, TArgs... args);

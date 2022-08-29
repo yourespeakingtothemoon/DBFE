@@ -1,0 +1,149 @@
+{
+	"actors":[
+		{
+			"type":"Actor",
+			"name":"tile01",
+			"tag":"Ground",
+			"prefab":true,
+			"transform":{
+				"scale":[
+					2,
+					2
+				]
+			},
+			"components":[
+				{
+					"type":"SpriteComponent",
+					"texture_name":"textures/Tiles/Forest/Tiles.png",
+					"source":[
+						14,
+						0,
+						16,
+						16
+					]
+				},
+				{
+					"type":"RBPhysicsComponent",
+					"data.is_dynamic":false
+				},
+				{
+					"type":"CollisionComponent",
+					"data.size":[
+						16,
+						32
+					]
+				}
+			]
+		},
+		{
+			"type":"Actor",
+			"name":"tile02",
+			"tag":"Ground",
+			"prefab":true,
+			"transform":{
+				"scale":[
+					2,
+					2
+				]
+			},
+			"components":[
+				{
+					"type":"SpriteComponent",
+					"texture_name":"textures/Tiles/Forest/Tiles.png",
+					"source":[
+					32,
+					47,
+						16,
+						16
+					]
+				},
+				{
+					"type":"RBPhysicsComponent",
+					"data.is_dynamic":false
+				},
+				{
+					"type":"CollisionComponent",
+					"data.size":[
+						8,
+						32
+					]
+				}
+			]
+		},
+		{
+			"type":"Actor",
+			"name":"tile03",
+			"tag":"Ground",
+			"prefab":true,
+			"transform":{
+				"scale":[
+					2,
+					2
+				]
+			},
+			"components":[
+				{
+					"type":"SpriteComponent",
+					"texture_name":"textures/Tiles/Forest/Tiles.png",
+					"source":[
+					14,
+					14,
+						16,
+						16
+					]
+				},
+				{
+					"type":"RBPhysicsComponent",
+					"data.is_dynamic":false
+				},
+				{
+					"type":"CollisionComponent",
+					"data.size":[
+						16,
+						32
+					]
+				}
+			]
+		},
+		{
+			"type":"Actor",
+			"name":"World",
+			"transform":{
+				"position":[
+					0,
+					32
+				]
+			},
+			"components":[
+				{
+					"type":"TilemapComponent",
+					"num_columns": 26,
+					"num_rows": 19,
+					"size": [32, 32],
+					"tile_names": ["", "tile01", "tile02","tile03"],
+					"tiles": [
+							0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ,0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0,
+							0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ,0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0,
+							0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ,0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0,
+							0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ,0, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0,0,
+							0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 0 ,0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0,
+							0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ,0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0,
+							0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ,0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0,0,
+							0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ,0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0,
+							0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ,0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0,
+							0, 0, 0, 0, 0, 2, 2, 2, 0, 0, 0, 0, 0, 0 ,0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0,
+							2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 0 ,0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0,
+							0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ,0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0,
+							1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ,1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,1,
+							3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3 ,3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,3,
+							3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3 ,3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,3,
+							3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3 ,3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,3,
+							3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3 ,3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,3,
+							3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3 ,3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,3,
+							3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3 ,3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,3
+							]
+				}
+			]
+		}
+	]
+}

@@ -9,7 +9,6 @@ namespace dbf
 		using clock = std::chrono::high_resolution_clock;
 		using clock_duration = clock::duration;
 		using clock_rep = clock::rep;
-
 	public:
 		TimeMgmt() :
 			m_startTimePoint{ clock::now() },
@@ -17,14 +16,16 @@ namespace dbf
 		{}
 
 		void gameTick();
-		void resetClk() { m_startTimePoint = clock::now(); }
+		void Reset() {
+			m_startTimePoint = clock::now();
+		}
 
-	public:
 		float deltaTime = 0;
 		float time = 0;
 
 	private:
-		clock::time_point m_startTimePoint; // time point at start of application
-		clock::time_point m_frameTimePoint; // time point at start of frame
+		clock::time_point m_startTimePoint;  //time point at start of application
+		clock::time_point m_frameTimePoint;  //time point at start of frame
+
 	};
 }

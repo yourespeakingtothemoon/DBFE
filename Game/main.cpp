@@ -1,53 +1,58 @@
 #include "Engine.h"
-
+#include "DinoGame.h"
 #include <iostream>
-#include <vector>
-#include <array>
-#include <list>
-#include <algorithm>
-
-using namespace std;
 
 int main()
 {
-	//std::cout << "Preeow World!" << std::endl;
-	
-
-//init mem
-	dbf::initalizeMemory();
-
-//file
+	dbf::initializeMemory();
 	dbf::SetFilePath("../Assets");
 
-//Engine init
-	// initialize systems
-	dbf::g_renderer.Initialize();
-	dbf::g_inputSystem.initialize();
-	dbf::g_audio.Initialize();
-	// create window
-	dbf::g_renderer.CreateWindow("Drachenblut FE", 800, 800);
-	dbf::g_renderer.SetClearColor(dbf::Color{ 255, 10, 100, 255 });
-	std::shared_ptr<dbf::Texture> dbfeLogo = std::make_shared<dbf::Texture>();
-	dbfeLogo->Create(dbf::g_renderer, "Images/logo.png");
-	float angle = 0;
-	bool quit = false;
-//game loop
-	while (!quit)
+	//systems initilization
+	dbf::g_renderer.init();
+	dbf::g_inputSystem.init();
+	dbf::g_audioSystem.init();
+	dbf::g_physicsSystem.init();
+	dbf::g_resourceManager.init();
+
+	dbf::Engine::instance().reg();
+
+	//render window
+	int width = 800;
+	int height = 600; 
+	dbf::g_renderer.generateWindow("DinoTest", width, height);
+	dbf::g_renderer.setClearColor(dbf::Color::black);
+	std::unique_ptr<DinoGame> game = std::make_unique<DinoGame>();
+	game->init();
+
+	bool exit = false;
+	//start loop
+	while (!exit)
 	{
-		//update
+		//systems update
 		dbf::g_time.gameTick();
 		dbf::g_inputSystem.update();
-		dbf::g_audio.Update();
-		//check for esc
-		if (dbf::g_inputSystem.getKeyState(dbf::key_escape) == dbf::InpSystem::keyState::Pressed) quit = true;
-		angle += 90*dbf::g_time.deltaTime;
-		// render
-		dbf::g_renderer.BeginFrame();
-		dbf::g_renderer.Draw(dbfeLogo, { 400, 400 }, angle,{1,1},{1.0f,.5f});
-		dbf::g_renderer.EndFrame();
-}
+		dbf::g_audioSystem.update();
+		dbf::g_physicsSystem.update();
+		//test for exit
+		if (dbf::g_inputSystem.queryKeyDown(dbf::key_escape)) exit = true;
+		//game update
+		game->update();
+		//draw screen
+		dbf::g_renderer.openFrame();
+		game->draw(dbf::g_renderer);
+		dbf::g_renderer.closeFrame();
+	}
+	game->shutdown();
+	game.reset();
+
+	dbf::Factory::instance().shutdown();
+
+	//exit
+	dbf::g_resourceManager.shutdown();
+	dbf::g_physicsSystem.shutdown();
+	dbf::g_audioSystem.shutdown();
 	dbf::g_inputSystem.shutdown();
-	dbf::g_renderer.Shutdown();
-	dbf::g_audio.Shutdown();
+	dbf::g_renderer.shutdown();
 }
+
 

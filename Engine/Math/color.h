@@ -1,15 +1,24 @@
 #pragma once
 #include <cstdint>
+#include<iostream>
 #include <string>
 
 namespace dbf
 {
-	struct Color
+	//typedef unsigned char u8_t;
+	//using u8_t = unsigned char; //alternative
+
+	struct Color 
 	{
-		uint8_t r;
-		uint8_t g;
-		uint8_t b;
-		uint8_t a;
+		//unsigned char r;
+		uint8_t r; //C version
+		uint8_t g; 
+		uint8_t b; 
+		uint8_t a; 
+
+		uint8_t operator [] (size_t index) const { return (&r)[index]; } //(index == 0) ? x : y; }
+		uint8_t& operator [] (size_t index) { return (&r)[index]; } //(index == 0) ? x : y; }
+
 
 		static const Color white;
 		static const Color black;
@@ -18,37 +27,12 @@ namespace dbf
 		static const Color blue;
 		static const Color drachen;
 
-		friend std::istream& operator >> (std::istream& stream, Color& color);
+		friend std::istream& operator >> (std::istream& stream, Color& c);
+		friend std::ostream& operator << (std::ostream& stream, const Color& color);
 	};
 
-	inline std::istream& operator >> (std::istream& stream, Color& color)
-	{
-		std::string line;
-		std::getline(stream, line);
-
-		std::string col;
-
-			//r
-			col = line.substr(line.find("{") + 1, line.find(",") - (line.find("{") + 1));
-			color.r = (std::uint8_t)(std::stof(col) * 255);
-
-			//#g,#b
-			line = line.substr(line.find(",") + 1);
-
-			//g
-			col = line.substr(line.find("{") + 1, line.find(",") - (line.find("{") + 1));
-			color.g = (std::uint8_t)(std::stof(col) * 255);
-			
-			//g
-			col = line.substr(line.find(",") + 1, line.find("}") - (line.find(",") + 1));
-			color.b = (std::uint8_t)(std::stof(col) * 255);
-
-
-		//color.r = 255;
-		//color.g = 255;
-		//color.b = 255;
-		color.a = 255;
-
-		return stream;
-	}
+	
+	std::istream& operator >> (std::istream& stream, Color& c);
+	std::ostream& operator << (std::ostream& stream, const Color& color);
+	
 }

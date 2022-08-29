@@ -1,30 +1,36 @@
-#include "AudioSystem.h"
-#include <fmod.hpp>
-namespace dbf {
-	void AudioSystem::Initialize()
+#include "AudioSystem.h" 
+#include "Core/Logger.h"
+#include <fmod.hpp> 
+
+namespace dbf
+{
+	void AudioSystem::init()
 	{
 		FMOD::System_Create(&m_fmodSystem);
 
-		void* extraDriverData = nullptr;
-		m_fmodSystem->init(32, FMOD_INIT_NORMAL, extraDriverData);
-
+		void* extradriverdata = nullptr;
+		m_fmodSystem->init(32, FMOD_INIT_NORMAL, extradriverdata);
 	}
 
-	void AudioSystem::Shutdown()
+	void AudioSystem::shutdown()
 	{
-		for (auto& sound : m_sounds)
+		// !! use range based for-loop to iterate through m_sounds, call release on each element 
+		for (auto& sounds : m_sounds)
 		{
-			sound.second->release();
+			sounds.second->release();
 		}
-		m_sounds.clear();
 
+		// !! call clear() on m_sounds to remove all elements 
+		m_sounds.clear();
+		// !! call close() on the fmod system
 		m_fmodSystem->close();
+		// !! call release() on the fmod system 
 		m_fmodSystem->release();
 	}
 
-
-	void AudioSystem::Update()
+	void AudioSystem::update()
 	{
+		// !! call update() on the fmod system 
 		m_fmodSystem->update();
 	}
 
@@ -34,48 +40,40 @@ namespace dbf {
 		{
 			FMOD::Sound* sound = nullptr;
 			m_fmodSystem->createSound(filename.c_str(), FMOD_DEFAULT, 0, &sound);
+
+			if (sound == nullptr)
+			{
+				LOG("Error creating sound %s.", filename.c_str());
+			}
+
 			m_sounds[name] = sound;
 		}
 	}
-	void AudioSystem::PlayAudio(const std::string& name, bool loop)
+
+	AudioChannel AudioSystem::PlayAudio(const std::string& name, float volume, float pitch, bool loop)
 	{
+		// find sound in map 
 		auto iter = m_sounds.find(name);
-		if (iter != m_sounds.end())
+		// if sound key not found in map (iter == end()), return default channel 
+		if (iter == m_sounds.end())
 		{
-			FMOD::Sound* sound = iter->second;
-			if (loop) {
-				sound->setMode(FMOD_LOOP_NORMAL);
-			}
-			else {
-				sound->setMode(FMOD_LOOP_OFF);
-			}
-
-			FMOD::Channel* channel;
-			m_fmodSystem->playSound(sound, 0, false, &channel);
+			LOG("Error could not find sound %s.", name.c_str());
+			return AudioChannel{};
 		}
-	}
-	void AudioSystem::StopAudio(bool played)
-	{
-		//int* NumChannels=nullptr;
-		//m_fmodSystem->getChannelsPlaying(NumChannels);
-		//FMOD_CHANNELCONTROL_CHANNELGROUP
-		
-		if (!played) {
-			const int NumChannels = 32;
 
-			for (int i = 0; i < NumChannels; i++)
-			{
-				FMOD::Channel* pChannel = nullptr;
-				FMOD_RESULT res = m_fmodSystem->getChannel(i, &pChannel);
+		// get sound pointer from iterator 
+		FMOD::Sound* sound = iter->second;
+		FMOD_MODE mode = (loop) ? FMOD_LOOP_NORMAL : FMOD_LOOP_OFF;
+		sound->setMode(mode);
 
-				if (res == FMOD_OK && pChannel)
-				{
-					pChannel->stop();
-				}
-			}
+		// play sound, sets the pointer to the channel it is playing in 
+		FMOD::Channel* channel;
+		m_fmodSystem->playSound(sound, 0, false, &channel);
+		channel->setVolume(volume);
+		channel->setPitch(pitch);
+		channel->setPaused(false);
 
-			PlayAudio("playerdie", false);
-			played = true;
-		}
+		// return audio channel with channel pointer set 
+		return AudioChannel{ channel };
 	}
 }

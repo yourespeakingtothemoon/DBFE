@@ -3,7 +3,7 @@
 #include <sstream>
 #include <string>
 
-namespace dbf
+namespace dbf 
 {
 	struct Vector2
 	{
@@ -11,28 +11,27 @@ namespace dbf
 
 		Vector2() : x{ 0 }, y{ 0 } {}
 		Vector2(float x, float y) : x{ x }, y{ y } {}
-		Vector2(float v) : x{ v }, y{ v } {}
-		Vector2(int x, int y) : x{ (float)x }, y{ (float)y } {}
+		Vector2(float v) : x{ v }, y{v} {}
+		Vector2(int x, int y) : x{ (float)x }, y{(float)y } {}
 
 		void Set(float x, float y) { this->x = x; this->y = y; }
-		float operator [] (size_t index) const { return (&x) [index]; }
-		float& operator [] (size_t index) { return (&x)[index]; }
+		float operator [] (size_t index) const { return (&x)[index]; } //(index == 0) ? x : y; }
+		float& operator [] (size_t index) { return (&x)[index]; } //(index == 0) ? x : y; }
 
-
-		// arithmetic operators
-		// Vector2 = Vector2 + Vector2
+		//arithmetic operators
+		//Vector 2 = Vector2 + Vector2
 		Vector2 operator + (const Vector2& v) const { return Vector2{ this->x + v.x, this->y + v.y }; }
 		Vector2 operator - (const Vector2& v) const { return Vector2{ this->x - v.x, this->y - v.y }; }
 		Vector2 operator * (const Vector2& v) const { return Vector2{ this->x * v.x, this->y * v.y }; }
 		Vector2 operator / (const Vector2& v) const { return Vector2{ this->x / v.x, this->y / v.y }; }
 
-		// Vector2 = Vector2 + float
+		//Vector 2 = Vector2 + float
 		Vector2 operator + (float s) const { return Vector2{ this->x + s, this->y + s }; }
-		Vector2 operator - (float s) const { return Vector2{ this->x - s, this->y - s }; }
+		Vector2 operator - (float s)  const { return Vector2{ this->x - s, this->y - s }; }
 		Vector2 operator * (float s) const { return Vector2{ this->x * s, this->y * s }; }
 		Vector2 operator / (float s) const { return Vector2{ this->x / s, this->y / s }; }
 
-		// assignment operators
+		//assignment operators
 		Vector2& operator += (const Vector2& v) { this->x += v.x; this->y += v.y; return *this; }
 		Vector2& operator -= (const Vector2& v) { this->x -= v.x; this->y -= v.y; return *this; }
 		Vector2& operator *= (const Vector2& v) { this->x *= v.x; this->y *= v.y; return *this; }
@@ -43,16 +42,16 @@ namespace dbf
 		Vector2& operator *= (float s) { this->x *= s; this->y *= s; return *this; }
 		Vector2& operator /= (float s) { this->x /= s; this->y /= s; return *this; }
 
-		// unary
-		// Vector2 = -Vector2
-		Vector2 operator - () const { return Vector2{ -x, -y }; }
+		//unary
+		//vector2 = -Vector2
+		Vector2 operator - () { return Vector2{-x, -y}; }
 
-		// comparison
-		// Vector2 == Vector2
+		//comparison
+		//Vector2 == Vector2
 		bool operator == (const Vector2& v) const { return (this->x == v.x && this->y == v.y); }
 		bool operator != (const Vector2& v) const { return (this->x != v.x || this->y != v.y); }
 
-		// functions
+		//functions
 		float LengthSqr();
 		float Length();
 
@@ -61,7 +60,7 @@ namespace dbf
 
 		Vector2 Normalized();
 		void Normalize();
-
+		
 		float GetAngle();
 		static Vector2 Rotate(const Vector2& v, float angle);
 
@@ -71,18 +70,22 @@ namespace dbf
 		static const Vector2 down;
 		static const Vector2 left;
 		static const Vector2 right;
-	};
-		
-	std::istream& operator >> (std::istream& stream, Vector2& v);
 
-	inline float Vector2::LengthSqr() 
-	{ 
-		return x * x + y * y; 
+	/*Vector2 Add(const Vector2& v) { return Vector2{v.x + x, v.y + y}; }*/
+	};
+
+	std::istream& operator >> (std::istream& stream, Vector2& v);
+	std::ostream& operator << (std::ostream& stream, const Vector2& v);
+
+	//declarations
+	inline float Vector2::LengthSqr()
+	{
+		return x * x + y * y;
 	}
-	
-	inline float Vector2::Length() 
-	{ 
-		return std::sqrt(x * x + y * y); 
+
+	inline float Vector2::Length()
+	{
+		return std::sqrt(x * x + y * y);
 	}
 
 	inline float Vector2::DistanceSqr(const Vector2& v)
@@ -99,7 +102,7 @@ namespace dbf
 	{
 		float length = Length();
 
-		return Vector2{ x / length, y / length };
+		return (length == 0) ? Vector2{ 0, 0 } : Vector2{ x / length, y / length };
 	}
 
 	inline void Vector2::Normalize()
@@ -117,15 +120,7 @@ namespace dbf
 		float x = v.x * std::cos(angle) - v.y * std::sin(angle);
 		float y = v.x * std::sin(angle) + v.y * std::cos(angle);
 
-		return Vector2{ x, y };
+		return Vector2{x, y};
 	}
-
-
-
-
-
-
-
-	//int m[2][2];
+	
 }
-

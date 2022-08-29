@@ -1,24 +1,61 @@
 #pragma once
-//core
+
+#include "Serialization/Json.h" 
+
 #include "Core/MemoryMgmt.h"
 #include "Core/File.h"
-#include "Core/TimeMgmt.h"
-//maths
+#include "Core/Time.h"
+#include "Core/Logger.h"
+
 #include "Math/MathUtils.h"
 #include "Math/Random.h"
-//other
-#include "Input/InputSystem.h"
-#include "Renderer/Renderer.h"
-#include "Audio/AudioSystem.h"
+
 #include "Framework/Scene.h"
 #include "Framework/Game.h"
+#include "Framework/Factory.h"
+#include "Framework/Singleton.h"
+
+#include "Framework/EventSystem/EventMgmt.h"
+
+#include "Framework/Components/PlayComponent.h"
+#include "Framework/Components/AudioComponent.h"
+#include "Framework/Components/CollisionComponent.h"
+#include "Framework/Components/PhysicsComponent.h"
+#include "Framework/Components/SpriteComponent.h"
+#include "Framework/Components/RBPhysicsComponent.h"
+#include "Framework/Components/ModelComponent.h"
+#include "Framework/Components/SpriteAnimComponent.h"
+#include "Framework/Components/TextComponent.h"
+#include "Framework/Components/TilemapComponent.h"
+
+#include "Input/InputSystem.h"
+#include "Audio/AudioSystem.h"
+#include "Physics/PhysicsSystem.h"
+#include "Resource/ResourceMgmt.h"
+
+#include "Renderer/Renderer.h"
 #include "Renderer/Text.h"
 #include "Renderer/Font.h"
+#include "Renderer/Texture.h"
+#include "Renderer/Model.h"
 
-namespace dbf
+#include <memory>
+
+
+namespace dbf 
 {
-	extern Renderer g_renderer;
 	extern InpSystem g_inputSystem;
+	extern Renderer g_renderer;
 	extern TimeMgmt g_time;
-	extern AudioSystem g_audio;
+	extern AudioSystem g_audioSystem;
+	extern ResourceMgmt g_resourceManager;
+	extern PhysicsSystem g_physicsSystem;
+	extern EventMgmt g_eventManager;
+
+	class Engine : public Singleton<Engine>
+	{
+	public:
+		void reg();
+		
+	};
 }

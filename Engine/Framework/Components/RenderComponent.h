@@ -1,11 +1,12 @@
 #pragma once
 #include "Component.h"
-#include "Renderer/renderer.h"
 namespace dbf
 {
+	class Renderer;
+
 	class RenderComponent : public Component
 	{
-		void Update();
-		void Draw(Renderer& renderer);
+	public:
+		virtual void draw(Renderer& renderer) = 0;
 	};
 }

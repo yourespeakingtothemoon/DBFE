@@ -1,10 +1,10 @@
 #pragma once
 #include "Renderer.h"
-#include "Resource\Resource.h"
+#include "Resource/Resource.h"
 #include <vector>
 #include <string>
 
-namespace dbf
+namespace dbf 
 {
 	class Model : public Resource
 	{
@@ -16,20 +16,21 @@ namespace dbf
 		{
 		}
 		Model(const std::string& filename);
-
-		//bool Create(const std::string& filename);
+		
 		bool Create(std::string filename, ...) override;
 
-		void Draw(Renderer& renderer, const Vector2& position, float angle, const Vector2& vector = Vector2 {1,1});
-		void Draw(Renderer& renderer, const Transform& transform);
+		void draw(Renderer& renderer, const Vector2& position, float angle, const Vector2& scale = Vector2{ 1, 1});
+		void draw(Renderer& renderer, const Transform& transform);
 
 		bool Load(const std::string& filename);
 		float CalculateRadius();
-		float getRadius() { return m_hitbox; }
+
+		float GetRadius() { return m_radius; }
 
 	private:
-		dbf::Color m_color{ 0, 0, 0, 0 };
+		dbf::Color m_color{0,0,0,0};
 		std::vector<dbf::Vector2> m_points;
-		float m_hitbox = 0;
+
+		float m_radius = 0;
 	};
 }
