@@ -14,7 +14,6 @@ namespace dbf
 		{
 			Actor* actorA = (Actor*)(fixtureA->GetUserData().pointer);
 			Actor* actorB = (Actor*)(fixtureB->GetUserData().pointer);
-
 			if (actorA->getComponent<CollisionComponent>())
 			{
 				actorA->getComponent<CollisionComponent>()->enterCollide(actorB);
@@ -35,7 +34,7 @@ namespace dbf
 		{
 			Actor* actorA = (Actor*)(fixtureA->GetUserData().pointer);
 			Actor* actorB = (Actor*)(fixtureB->GetUserData().pointer);
-
+			if (actorA->queryDestroy() || actorB->queryDestroy())return;
 			if (actorA->getComponent<CollisionComponent>())
 			{
 				actorA->getComponent<CollisionComponent>()->exitCollide(actorB);

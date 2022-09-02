@@ -61,11 +61,17 @@ namespace dbf
 	extern const uint32_t key_left;
 	extern const uint32_t key_right;
 	extern const uint32_t key_escape;
+	extern const uint32_t key_enter;
 	
 	extern const uint32_t key_w;
 	extern const uint32_t key_a;
 	extern const uint32_t key_s;
 	extern const uint32_t key_d;
+
+	extern const uint32_t key_k;
+	extern const uint32_t key_l;
+	extern const uint32_t key_sc;
+
 
 	extern const uint32_t key_1;
 	extern const uint32_t key_2;
@@ -74,5 +80,28 @@ namespace dbf
 	extern const uint32_t button_left;
 	extern const uint32_t button_middle;
 	extern const uint32_t button_right;
+
+	extern const uint32_t xiA;
+	extern const uint32_t xiB;
+	extern const uint32_t xiX;
+	extern const uint32_t xiY;
+
+	extern const uint32_t xiUp;
+	extern const uint32_t xiDown;
+	extern const uint32_t xiLeft;
+	extern const uint32_t xiRight;
+
+	extern const uint32_t xiShare;
+	extern const uint32_t xiStart;
+	extern const uint32_t xiExit;
+
+	extern const uint32_t leftStickX;
+	extern const uint32_t leftStickY;
+	extern const uint32_t rightStickX;
+	extern const uint32_t rightStickY;
+
+
+
+
 
 }

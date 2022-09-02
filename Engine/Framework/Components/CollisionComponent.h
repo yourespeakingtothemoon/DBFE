@@ -28,9 +28,12 @@ namespace dbf
 		virtual bool write(const rapidjson::Value& value) const override;
 		virtual bool read(const rapidjson::Value& value) override;
 
+		Vector2 scale_offset = { 1, 1 };
 	private:
 		PhysicsSystem::CollisionData data;
 		functionPtr m_enterFunction;
 		functionPtr m_exitFunction;
+		
+
 	};
 }

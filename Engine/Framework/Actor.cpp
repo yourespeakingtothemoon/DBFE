@@ -2,6 +2,7 @@
 #include "Factory.h"
 #include "Components/RenderComponent.h"
 #include "Core/Logger.h"
+#include "Engine.h"
 
 namespace dbf 
 {
@@ -10,7 +11,7 @@ namespace dbf
 		name = other.name;
 		tag = other.tag;
 		m_transform = other.m_transform;
-
+		lifespan = other.lifespan;
 		m_scene = other.m_scene;
 
 		for (auto& component : other.m_components)
@@ -35,6 +36,16 @@ namespace dbf
 	void Actor::update()
 	{
 		if (!active) return;
+
+		// update lifespan if lifespan is not 0 
+		if (lifespan != 0)
+		{
+			lifespan -= g_time.deltaTime;
+			if (lifespan <= 0)
+			{
+				flipDestroy();
+			}
+		}
 
 		for (auto& component : m_components)
 		{
@@ -90,6 +101,7 @@ namespace dbf
 		READ_DATA(value, tag);
 		READ_DATA(value, name);
 		READ_DATA(value, active);
+		READ_DATA(value, lifespan);
 
 		if (value.HasMember("transform")) m_transform.read(value["transform"]);
 		//m_transform.Read(value["transform"]);

@@ -1,0 +1,63 @@
+{
+  "actors": [
+    {
+      "type": "Actor",
+      "name": "Background",
+      "transform": {
+        "position": [
+          400,
+          300
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation": 0
+      },
+      "components": [
+        {
+          "type": "SpriteComponent",
+          "texture_name": "Textures/NonParallax.png"
+        }
+      ]
+    },
+    {
+      "type": "Actor",
+      "name": "Music",
+      "components": [
+        {
+          "type": "AudioComponent",
+          "sound_name": "Audio/And The Journey Begins .wav",
+          "loop": true,
+          "play_on_start": true
+        }
+      ]
+    },
+    {
+      "type": "Actor",
+      "name": "TitleCard",
+      "transform": {
+        "position": [
+          400,
+          300
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation": 0
+      },
+      "components": [
+        {
+          "type": "SpriteComponent",
+          "texture_name": "images/logo.png",
+          "size": 64,
+          "registration": [
+            0,
+            0.5
+          ]
+        }
+      ]
+    }
+  ]
+}

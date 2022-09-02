@@ -40,7 +40,7 @@ namespace dbf
 	{
 		Vector2 result;
 
-		result.x = v.x * rows[0][0] + v.y * rows[0][1]+ 1.0f*rows[0][2];
+		result.x = v.x * rows[0][0] + v.y * rows[0][1]+ 1.0f * rows[0][2];
 		result.x = v.x * rows[1][0] + v.y * rows[1][1]+ 1.0f * rows[1][2];
 
 		return result;
@@ -50,19 +50,20 @@ namespace dbf
 	{
 		Mat3x3 result;
 
-		result[0][0] = mx.rows[0][0] * rows[0][0] + mx.rows[1][0] * rows[0][1] + rows[0][2] * mx.rows[2][0];
-		result[0][1] = mx.rows[0][1] * rows[0][1] + mx.rows[1][1] * rows[0][1] + rows[0][2] * mx.rows[2][1];
-		result[0][2] = mx.rows[0][0] * rows[0][2] + mx.rows[1][1] * rows[0][2] + rows[0][2] * mx.rows[2][2];
+		//row1
+		result[0][0] = rows[0][0] * mx[0][0] + rows[0][1] * mx[1][0] + rows[0][2] * mx[2][0];
+		result[0][1] = rows[0][0] * mx[0][1] + rows[0][1] * mx[1][1] + rows[0][2] * mx[2][1];
+		result[0][2] = rows[0][0] * mx[0][2] + rows[0][1] * mx[1][2] + rows[0][2] * mx[2][2];
 
-		result[1][0] = mx.rows[1][0] * rows[1][0] + mx.rows[1][0] * rows[1][1] + rows[1][2] * mx.rows[2][0];
-		result[1][1] = mx.rows[1][1] * rows[1][1] + mx.rows[1][1] * rows[1][1] + rows[1][2] * mx.rows[2][1];
-		result[1][2] = mx.rows[1][0] * rows[1][2] + mx.rows[1][1] * rows[1][2] + rows[1][2] * mx.rows[2][2];
+		//row2
+		result[1][0] = rows[1][0] * mx[1][0] + rows[1][1] * mx[1][0] + rows[1][2] * mx[2][0];
+		result[1][1] = rows[1][0] * mx[1][1] + rows[1][1] * mx[1][1] + rows[1][2] * mx[2][1];
+		result[1][2] = rows[1][0] * mx[1][2] + rows[1][1] * mx[1][2] + rows[1][2] * mx[2][2];
 
-		result[2][0] = mx.rows[2][0] * rows[2][0] + mx.rows[2][0] * rows[2][1] + rows[2][2] * mx.rows[2][0];
-		result[2][1] = mx.rows[2][1] * rows[2][1] + mx.rows[2][1] * rows[2][1] + rows[2][2] * mx.rows[2][1];
-		result[2][2] = mx.rows[2][0] * rows[2][2] + mx.rows[2][1] * rows[2][2] + rows[2][2] * mx.rows[2][2];
-
-	
+		//row3
+		result[2][0] = rows[2][0] * mx[2][0] + rows[2][1] * mx[2][0] + rows[2][2] * mx[2][0];
+		result[2][1] = rows[2][0] * mx[2][1] + rows[2][1] * mx[2][1] + rows[2][2] * mx[2][1];
+		result[2][2] = rows[2][0] * mx[2][2] + rows[2][1] * mx[2][2] + rows[2][2] * mx[2][2];
 
 		return result;
 	}

@@ -1,47 +1,198 @@
 {
-    "actors":
-    [
+  "actors": [
+    {
+      "type": "Actor",
+      "name": "Coin",
+      "tag": "Pickup",
+      "lifespan": 4,
+      "prefab": true,
+      "transform": {
+        "position": [
+          600,
+          200
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation": 0
+      },
+      "components": [
         {
-            "type":"Actor",
-            "name":"Coin",
-            "tag":"Pickup",
-            "prefab":true,
-            "transform":
+          "type": "RBPhysicsComponent",
+          "damping": 0.4,
+          "data.gravity_scale": 1,
+          "data.constrain_angle": true
+        },
+        {
+          "type": "CollisionComponent",
+          "data.restitution": 0.7
+        },
+        {
+          "type": "SpriteAnimComponent",
+          "default_sequence": "idle",
+          "sequences": [
             {
-                "position":
-                [
-                    600,
-                    200
-                ],
-            "scale":[
-                1,
-                1
-            ],
-            "rotation":0
-            },
-            "components":
-            [
-                {
-                    "type":"RBPhysicsComponent",
-                    "damping":0.4,
-                    "data.gravity_scale":1,
-                    "data.constrain_angle":false
-                },
-                {
-                    "type":"CollisionComponent",
-                    "data.size": [48, 48],
-                    "data.restitution": 0.7
-                },
-                {
-                    "type":"SpriteAnimComponent",
-                    "texture_name":"Textures/coin.png",
-                    "fps":12,
-                    "num_columns":8,
-                    "num_rows":1,
-                    "start_frame":1,
-                    "end_frame":8
-                    }
-            ]
+              "sequence.name": "idle",
+              "sequence.fps": 12,
+              "sequence.num_columns": 8,
+              "sequence.num_rows": 1,
+              "sequence.start_frame": 1,
+              "sequence.end_frame": 8,
+              "texture_name": "Textures/Coin.png"
+            }
+          ]
         }
-    ]
+      ]
+    },
+    {
+        "type": "Actor",
+        "name": "Hitbox",
+        "tag": "Hitbox",
+        "prefab": true,
+        "lifespan": 0.03,
+        "transform": {
+          "scale": [
+            2,
+            2
+          ],
+          "rotation": 0
+        },
+        "components": [
+        {
+          "type": "RBPhysicsComponent",
+          "damping": 0.4,
+          "data.gravity_scale": 1,
+          "data.constrain_angle": true
+        },
+          {
+            "type": "CollisionComponent",
+            "data.size": [32,32]
+          },
+          {
+          "type": "SpriteComponent",
+            "texture_name": "Textures/Knight/hbox.png"
+          }
+        ]
+      },
+      {
+           "type":"Actor",
+           "name":"Ghosty",
+           "tag":"Enemy",
+           "prefab":true,
+           "transform":{
+               "position":[
+                   600,
+                   200
+               ],
+               "scale":[
+                   2,
+                   2
+               ],
+               "rotation":0
+           },
+           "components":[
+               {
+                   "type":"EnemyComponent",
+                   "speed":4,
+                   "health":30,
+                   "damage":60
+               },
+               {
+                   "type":"RBPhysicsComponent",
+                   "damping":0.4,
+                   "data.gravity_scale":0,
+                   "data.constrain_angle":true
+               },
+               {
+                   "type":"CollisionComponent",
+                   "data.restitution":0.7,
+                   "data.is_trigger":true,
+                   "scale_offset": [ 0.5, 0.5 ]
+               },
+               {
+                   "type":"SpriteAnimComponent",
+                   "default_sequence":"idle",
+                   "sequences":[
+                       {
+                           "sequence.name":"idle",
+                           "sequence.fps":12,
+                           "sequence.num_columns":7,
+                           "sequence.num_rows":1,
+                           "sequence.start_frame":1,
+                           "sequence.end_frame":7,
+                           "texture_name":"Textures/Ghosty/goats.png"
+                       }
+                   ]
+               }
+           ]
+       },
+    {
+      "type": "Actor",
+      "name": "Skelly",
+      "tag": "Enemy",
+      "prefab": true,
+      "transform": {
+        "position": [
+          600,
+          200
+        ],
+        "scale": [
+          2,
+          2
+        ],
+        "rotation": 0
+      },
+      "components": [
+        {
+          "type": "EnemyComponent",
+          "speed": 70,
+          "health": 30,
+          "damage": 60
+        },
+        {
+          "type": "RBPhysicsComponent",
+          "damping": 0.4,
+          "data.gravity_scale": 1,
+          "data.constrain_angle": true
+        },
+        {
+          "type": "CollisionComponent"
+        },
+        {
+          "type": "SpriteAnimComponent",
+          "default_sequence": "idle",
+          "sequences": [
+            {
+              "sequence.name": "idle",
+              "sequence.fps": 11,
+              "sequence.num_columns": 11,
+              "sequence.num_rows": 1,
+              "sequence.start_frame": 1,
+              "sequence.end_frame": 11,
+              "texture_name": "Textures/skelly/Skeleton Idle.png"
+            },
+            {
+              "sequence.name": "run",
+              "sequence.fps": 11,
+              "sequence.num_columns": 13,
+              "sequence.num_rows": 1,
+              "sequence.start_frame": 1,
+              "sequence.end_frame": 13,
+              "texture_name": "Textures/skelly/Skeleton Walk.png"
+            },
+            {
+              "sequence.name": "fall",
+              "sequence.fps": 11,
+              "sequence.num_columns": 4,
+              "sequence.num_rows": 1,
+              "sequence.start_frame": 1,
+              "sequence.end_frame": 4,
+              "texture_name": "Textures/skelly/Skeleton React.png"
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }

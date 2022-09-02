@@ -1,0 +1,70 @@
+{
+  "actors": [
+    {
+      "type": "Actor",
+      "name": "HealthTxt",
+      "transform": {
+        "position": [
+          40,
+          50
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation": 0
+      },
+      "components": [
+        {
+          "type": "TextComponent",
+          "text": "Health:",
+          "fontName": "Fonts/CompassPro.ttf",
+          "size": 32,
+          "registration": [
+            0,
+            0.5
+          ],
+          "color": [
+            255,
+            100,
+            0,
+            255
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Actor",
+      "name": "TimerTxt",
+      "transform": {
+        "position": [
+          40,
+          50
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation": 0
+      },
+      "components": [
+        {
+          "type": "TextComponent",
+          "text": "00:00",
+          "fontName": "Fonts/CompassPro.ttf",
+          "size": 32,
+          "registration": [
+            0,
+            0.5
+          ],
+          "color": [
+            255,
+            100,
+            0,
+            255
+          ]
+        }
+      ]
+    }
+  ]
+}

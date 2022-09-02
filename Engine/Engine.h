@@ -27,6 +27,8 @@
 #include "Framework/Components/SpriteAnimComponent.h"
 #include "Framework/Components/TextComponent.h"
 #include "Framework/Components/TilemapComponent.h"
+#include "Framework/Components/CharComponent.h"
+#include "Framework/Components/CameraComponent.h"
 
 #include "Input/InputSystem.h"
 #include "Audio/AudioSystem.h"

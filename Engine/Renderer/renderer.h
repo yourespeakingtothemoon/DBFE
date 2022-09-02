@@ -2,6 +2,8 @@
 #include "Math\Vector2.h"
 #include "Math\Color.h"
 #include "Math\Rectangle.h"
+#include "Math/Mat3x3.h"
+
 #include "Texture.h"
 
 struct SDL_Renderer;
@@ -33,7 +35,10 @@ namespace dbf
 		//images
 		void draw(std::shared_ptr<Texture> texture, const Vector2& position, float angle = 0, const Vector2& scale = Vector2{ 1, 1 }, const Vector2& registration = Vector2{0.5f, 0.5f});
 		void draw(std::shared_ptr<Texture> texture, const Transform& transform, const Vector2& registration = Vector2{ 0.5f, 0.5f });
-		void draw(std::shared_ptr<Texture> texture, const Rectangle& source, const Transform& transform, const Vector2& registration = Vector2(.5f,.5f));
+		void draw(std::shared_ptr<Texture> texture, const Rectangle& source, const Transform& transform, const Vector2& registration = Vector2(.5f,.5f), bool flipH=false);
+
+		void setViewMatrix(const Mat3x3& view) { m_view = view; }
+		void setViewportMatrix(const Mat3x3& viewport) { m_viewport = viewport; }
 
 		int GetWidth() {return m_width; }
 		int GetHeight() { return m_height; }
@@ -49,6 +54,9 @@ namespace dbf
 		SDL_Renderer* m_renderer{ nullptr };
 
 		Color m_clearColor{ 0, 0, 0, 255 };
+
+		Mat3x3 m_view;
+		Mat3x3 m_viewport;
 
 		SDL_Window* m_window{ nullptr };
 	};

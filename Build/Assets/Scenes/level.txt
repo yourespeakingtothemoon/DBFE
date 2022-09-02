@@ -9,8 +9,8 @@
               300
             ],
             "scale":[
-               10,
-               10
+               1,
+               1
             ],
             "rotation":0
          },
@@ -22,92 +22,124 @@
          ]
       },
 
-      {
-         "type":"Actor",
-         "name":"Player",
-         "tag":"Player",
-         "transform":{
-            "position":[
-               400,
-               200
-            ],
-            "scale":[
-               2,
-               2
-            ],
-            "rotation":0
-         },
-         "components":[
-            {
-               "type":"PlayComponent",
-               "spd":70
-            },
-            {
-               "type":"RBPhysicsComponent",
-               "damping":0.4,
-               "data.gravity_scale":1,
-               "data.constrain_angle":true
-            },
-            {
-               "type":"CollisionComponent",
-               "data.size": [32, 32],
-              "data.restitution": 0.7
-            },
-            {
-               "type":"SpriteAnimComponent",
-               "texture_name":"Textures/Knight/_Run.png",
-               "fps":12,
-               "num_columns":10,
-               "num_rows":1,
-               "start_frame":1,
-               "end_frame":10
-            }
-         ]
-      },
-      {
-         "type":"Actor",
-         "name":"Text",
-         "transform":{
-            "position":[
-               40,
-               50
-            ],
-            "scale":[
-               1,
-               1
-            ],
-            "rotation":0
-         },
-         "components":[
-            {
-               "type":"TextComponent",
-               "text":"Preeow World",
-               "fontName":"Fonts/CompassPro.ttf",
-               "size":32,
-               "registration":[
-                  0.0,
-                  0.5
-               ],
-               "color":[
-                  0,
-                  255,
-                  255,
-                  255
-               ]
-            }
-         ]
-      },
+                    {
+                       "type":"Actor",
+                       "name":"Player",
+                       "tag":"Player",
+                       "prefab":"true",
+                       "transform":{
+                          "position":[
+                             400,
+                             200
+                          ],
+                          "scale":[
+                             2,
+                             2
+                          ],
+                          "rotation":0
+                       },
+                       "components":[
+                          {
+                             "type":"PlayComponent",
+                             "spd":70,
+                             "health":3
+                          },
+                          {
+                             "type":"RBPhysicsComponent",
+                             "damping":0.4,
+                             "data.gravity_scale":1,
+                             "data.constrain_angle":true
+                          },
+                          {
+                             "type":"CollisionComponent",
+                             "scale_offset":[0.25,1]
+                          },
+                          {
+                     "type":"SpriteAnimComponent",
+                     "default_sequence":"idle",
+                     "sequences":[
+                         {
+                             "sequence.name":"run",
+                             "sequence.fps":10,
+                             "sequence.num_columns":10,
+                             "sequence.num_rows":1,
+                             "sequence.start_frame":1,
+                             "sequence.end_frame":10,
+                             "texture_name":"Textures/Knight/_Run.png"
+                         },
+                         {
+                             "sequence.name":"idle",
+                             "sequence.fps":10,
+                             "sequence.num_columns":10,
+                             "sequence.num_rows":1,
+                             "sequence.start_frame":1,
+                             "sequence.end_frame":10,
+                             "texture_name":"Textures/Knight/_Idle.png"
+                         },
+                         {
+                              "sequence.name":"attack",
+                              "sequence.fps":15,
+                              "sequence.num_columns":10,
+                              "sequence.num_rows":1,
+                              "sequence.start_frame":1,
+                              "sequence.end_frame":10,
+                              "texture_name":"Textures/Knight/_AttackCombo2hit.png"
+                          },
+                         {
+                             "sequence.name":"jump",
+                             "sequence.fps":10,
+                             "sequence.num_columns":3,
+                             "sequence.num_rows":1,
+                             "sequence.start_frame":1,
+                             "sequence.end_frame":3,
+                             "texture_name":"Textures/Knight/_Jump.png"
+                         },
+                         {
+                             "sequence.name":"fall",
+                             "sequence.fps":10,
+                             "sequence.num_columns":3,
+                             "sequence.num_rows":1,
+                             "sequence.start_frame":1,
+                             "sequence.end_frame":3,
+                             "texture_name":"Textures/Knight/_Fall.png"
+                         }
+
+                     ]
+                }
+                       ]
+                    },
       {
          "type":"Actor",
          "name":"Music",
          "components":[
             {
                "type":"AudioComponent",
-               "sound_name":"Audio/And The Journey Begins .wav",
+               "sound_name":"Audio/hub.wav",
                "loop":true,
                "play_on_start":true
             }
          ]
-      }
+      },
+      {
+     "type":"Actor",
+     "name":"Camera",
+     "transform":{
+         "position":[
+             400,
+             300
+         ],
+         "scale":[
+             1,
+             1
+         ],
+         "rotation":0
+     },
+     "components":[
+         {
+             "type":"CameraComponent",
+             "viewport_size": [800, 600]
+         }
+     ]
+ }
    ]
 }

@@ -83,7 +83,7 @@ namespace dbf
         //pass address of x and y
         SDL_QueryTexture(m_texture, nullptr, nullptr, &point.x, &point.y);
 
-        
+
         return Vector2(point.x, point.y);// !! return Vector2 of point.x, point.y 
     }
 }

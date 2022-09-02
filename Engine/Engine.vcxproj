@@ -28,6 +28,8 @@
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Framework\Actor.cpp" />
     <ClCompile Include="Framework\Components\AudioComponent.cpp" />
+    <ClCompile Include="Framework\Components\CameraComponent.cpp" />
+    <ClCompile Include="Framework\Components\CharComponent.cpp" />
     <ClCompile Include="Framework\Components\CollisionComponent.cpp" />
     <ClCompile Include="Framework\Components\ModelComponent.cpp" />
     <ClCompile Include="Framework\Components\PhysicsComponent.cpp" />
@@ -66,6 +68,8 @@
     <ClInclude Include="Engine.h" />
     <ClInclude Include="Framework\Actor.h" />
     <ClInclude Include="Framework\Components\AudioComponent.h" />
+    <ClInclude Include="Framework\Components\CameraComponent.h" />
+    <ClInclude Include="Framework\Components\CharComponent.h" />
     <ClInclude Include="Framework\Components\CollisionComponent.h" />
     <ClInclude Include="Framework\Components\Component.h" />
     <ClInclude Include="Framework\Components\ModelComponent.h" />

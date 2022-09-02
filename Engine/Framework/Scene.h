@@ -66,7 +66,7 @@ namespace dbf
 	{
 		for(auto& actor : m_actors)
 		{
-			if (actor->getName==name)
+			if (actor->getName() == name)
 				{
 				return dynamic_cast<T*>(actor.get());
 					 }

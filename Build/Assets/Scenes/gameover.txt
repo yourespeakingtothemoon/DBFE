@@ -1,0 +1,58 @@
+{
+  "actors": [
+    {
+      "type": "Actor",
+      "name": "Background",
+      "transform": {
+        "position": [
+          400,
+          300
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation": 0
+      },
+      "components": [
+        {
+          "type": "SpriteComponent",
+          "texture_name": "Textures/NonParallax.png"
+        }
+      ]
+    },
+    {
+      "type": "Actor",
+      "name": "GameOver",
+      "transform": {
+        "position": [
+          400,
+          300
+        ],
+        "scale": [
+          1,
+          1
+        ],
+        "rotation": 0
+      },
+      "components": [
+        {
+          "type": "TextComponent",
+          "text": "Press Enter to Restart",
+          "fontName": "Fonts/CompassPro.ttf",
+          "size": 32,
+          "registration": [
+            0,
+            0.5
+          ],
+          "color": [
+            255,
+            255,
+            255,
+            255
+          ]
+        }
+      ]
+    }
+  ]
+}

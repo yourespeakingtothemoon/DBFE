@@ -17,4 +17,10 @@ namespace dbf
 		std::variant <int, bool, float, std::string> eventData;
 
 	};
+
+	class INotify
+	{
+	public:
+		virtual void OnNotify(const Event& event) = 0;
+	};
 }

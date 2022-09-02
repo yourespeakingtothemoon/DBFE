@@ -152,6 +152,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="DinoGame.cpp" />
+    <ClCompile Include="GameComponents\EnemyComponent.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -161,6 +162,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DinoGame.h" />
+    <ClInclude Include="GameComponents\EnemyComponent.h" />
+    <ClInclude Include="GameComponents\SpellComponent.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

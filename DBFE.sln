@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Game", "Game\Game.vcxproj",
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Engine", "Engine\Engine.vcxproj", "{91876630-96F1-4125-9579-3FB19AC0C71B}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SolarisII", "SolarisII\SolarisII.vcxproj", "{FDD3DE7D-EF5A-4611-9030-04CEC01085BD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{91876630-96F1-4125-9579-3FB19AC0C71B}.Release|x64.Build.0 = Release|x64
 		{91876630-96F1-4125-9579-3FB19AC0C71B}.Release|x86.ActiveCfg = Release|Win32
 		{91876630-96F1-4125-9579-3FB19AC0C71B}.Release|x86.Build.0 = Release|Win32
+		{FDD3DE7D-EF5A-4611-9030-04CEC01085BD}.Debug|x64.ActiveCfg = Debug|x64
+		{FDD3DE7D-EF5A-4611-9030-04CEC01085BD}.Debug|x64.Build.0 = Debug|x64
+		{FDD3DE7D-EF5A-4611-9030-04CEC01085BD}.Debug|x86.ActiveCfg = Debug|Win32
+		{FDD3DE7D-EF5A-4611-9030-04CEC01085BD}.Debug|x86.Build.0 = Debug|Win32
+		{FDD3DE7D-EF5A-4611-9030-04CEC01085BD}.Release|x64.ActiveCfg = Release|x64
+		{FDD3DE7D-EF5A-4611-9030-04CEC01085BD}.Release|x64.Build.0 = Release|x64
+		{FDD3DE7D-EF5A-4611-9030-04CEC01085BD}.Release|x86.ActiveCfg = Release|Win32
+		{FDD3DE7D-EF5A-4611-9030-04CEC01085BD}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

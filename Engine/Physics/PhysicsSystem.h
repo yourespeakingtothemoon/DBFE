@@ -41,7 +41,8 @@ namespace dbf
 		b2Body* CreateBody(const Vector2& position, float angle, const RigidBodyData& data);
 		void DestroyBody(b2Body* body);
 
-		void SetCollisionBox(b2Body* body, const CollisionData& data, class Actor* actor = nullptr);
+		void setCollisionBox(b2Body* body, const CollisionData& data, class Actor* actor = nullptr);
+		void setCollisionBoxStatic(b2Body* body, const CollisionData& data, class Actor* actor = nullptr);
 
 		static Vector2 WorldToScreen(const Vector2& world) { return world * pixelsPerUnit; }
 		static Vector2 ScreenToWorld(const Vector2& screen) { return screen * (1.0f / pixelsPerUnit); }

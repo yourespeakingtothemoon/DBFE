@@ -5,12 +5,12 @@
 class DinoGame : public dbf::Game
 {
 public:
-	/*enum class GameState
+	enum class GameState
 	{
 		titleScr,
 		startLvl,
 		gameOver
-	};*/
+	};
 public:
 	
 	virtual void init() override;
@@ -19,7 +19,10 @@ public:
 	virtual void draw(dbf::Renderer& renderer) override;
 	//void onAddScore(const dbf::Event& event);
 
-//private:
+private:
+	float spawnCounter=0;
+	//Time gameTime;
+	GameState state=DinoGame::GameState::titleScr;
 	//GameState create to make switch statement for different screens. in update, use event system to get game state.
 
 
